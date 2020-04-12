@@ -1,0 +1,57 @@
+{
+  "translations": {
+    "general": {
+      "dropzone": "Drag 'n' drop a Golden Sun rom here, or click to select a file.",
+      "dropzoneActive": "Drop the rom here...",
+      "notGoldenSun": "Not a Golden Sun Rom.",
+      "notAvailable": "This Golden Sun rom is not yet compatible."
+    },
+    "sections": {
+      "abilities": "Abilities",
+      "djinn": "Djinn",
+      "enemies": "Enemies",
+      "groups": "Groups",
+      "items": "Items",
+      "summons": "Summons",
+      "texts": "Texts"
+    },
+    "attributes": {
+      "jupiter": "Jupiter",
+      "mars": "Mars",
+      "mercury": "Mercury",
+      "venus": "Venus"
+    },
+    "inputs": {
+      "ability": "Ability",
+      "agility": "Agility",
+      "attack": "Attack",
+      "attribute": "Attribute",
+      "coins": "Pièces",
+      "defense": "Defense",
+      "description": "Description",
+      "effect": "Effect",
+      "enemy": "Enemy",
+      "experience": "Expérience",
+      "hp": "HP",
+      "icon": "Icon",
+      "item": "Item",
+      "level": "Level",
+      "luck": "Luck",
+      "maximum": "Maximum",
+      "minimum": "Minimum",
+      "name": "Name",
+      "power": "Power",
+      "pp": "PP",
+      "ppCost": "PP Cost",
+      "price": "Price",
+      "quantity": "Quantity",
+      "range": "Range",
+      "target": "Target",
+      "turns": "Turns",
+      "type": "Type",
+      "unleash": "Unleash",
+      "unleashRate": "Unleash Rate",
+      "utility": "Utilities"
+    }
+  }
+}

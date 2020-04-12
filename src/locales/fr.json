@@ -1,0 +1,57 @@
+{
+  "translations": {
+    "general": {
+      "dropzone": "Glissez/Déposez une rom Golden Sun ici, ou cliquez pour sélectionner un fichier.",
+      "dropzoneActive": "Déposez la rom ici...",
+      "notGoldenSun": "Ce fichier n'est pas une rom Golden Sun.",
+      "notAvailable": "Cette rom Golden Sun n'est pas encore compatible."
+    },
+    "sections": {
+      "abilities": "Capacités",
+      "djinn": "Djinns",
+      "enemies": "Ennemis",
+      "groups": "Groupes",
+      "items": "Objets",
+      "summons": "Invocations",
+      "texts": "Textes"
+    },
+    "attributes": {
+      "jupiter": "Jupiter",
+      "mars": "Mars",
+      "mercury": "Mercure",
+      "venus": "Vénus"
+    },
+    "inputs": {
+      "ability": "Capacité",
+      "agility": "Agilité",
+      "attack": "Attaque",
+      "attribute": "Attribute",
+      "coins": "Coins",
+      "defense": "Défense",
+      "description": "Description",
+      "effect": "Effet",
+      "enemy": "Ennemi",
+      "experience": "Experience",
+      "hp": "PV",
+      "icon": "Icône",
+      "item": "Objet",
+      "level": "Niveau",
+      "luck": "Chance",
+      "maximum": "Maximum",
+      "minimum": "Minimum",
+      "name": "Nom",
+      "power": "Puissange",
+      "pp": "PP",
+      "ppCost": "Coût PP",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "range": "Portée",
+      "target": "Cible",
+      "turns": "Tours",
+      "type": "Type",
+      "unleash": "Déchaînement",
+      "unleashRate": "Taux déchaînement",
+      "utility": "Utilité"
+    }
+  }
+}
