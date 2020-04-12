@@ -146,16 +146,6 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 type="number"
-                label={t("inputs.turns")}
-                value={enemies[selectedItem].turns}
-                fullWidth
-                inputProps={{ step: 1, min: 0, max: 2 }}
-                onChange={(event) => handleChange("turns", event.target.value)}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                type="number"
                 label="HP Regen"
                 value={enemies[selectedItem].hp_regen}
                 fullWidth
@@ -177,91 +167,18 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
                 }
               />
             </Grid>
+            <Grid item xs={3}></Grid>
             <Grid item xs={3}>
               <TextField
                 type="number"
-                label={t("inputs.experience")}
-                value={enemies[selectedItem].experience}
+                label={t("inputs.turns")}
+                value={enemies[selectedItem].turns}
                 fullWidth
-                inputProps={{ step: 1, min: 0, max: 65535 }}
-                onChange={(event) =>
-                  handleChange("experience", event.target.value)
-                }
+                inputProps={{ step: 1, min: 0, max: 2 }}
+                onChange={(event) => handleChange("turns", event.target.value)}
               />
             </Grid>
-            <Grid item xs={4}>
-              <TextField
-                type="number"
-                label={t("inputs.coins")}
-                value={enemies[selectedItem].coins}
-                fullWidth
-                inputProps={{ step: 1, min: 0, max: 65535 }}
-                onChange={(event) => handleChange("coins", event.target.value)}
-              />
-            </Grid>
-            {[...new Array(8)].map((_, index) => (
-              <Grid key={index} item xs={2}>
-                <TextField
-                  select
-                  label={`${t("inputs.ability")} ${index + 1}`}
-                  value={enemies[selectedItem][`ability_${index + 1}`]}
-                  fullWidth
-                  SelectProps={{
-                    native: true,
-                  }}
-                  onChange={(event) =>
-                    handleChange(`ability_${index + 1}`, event.target.value)
-                  }
-                >
-                  {abilities.map((ability: Ability, index: number) => (
-                    <option key={index} value={index}>
-                      {ability.name}
-                    </option>
-                  ))}
-                </TextField>
-              </Grid>
-            ))}
-            <Grid item xs={2}>
-              <TextField
-                select
-                label="Drop Item"
-                value={enemies[selectedItem].drop_item}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("drop_item", event.target.value)
-                }
-              >
-                {items.map((item: Item, index: number) => (
-                  <option key={index} value={index}>
-                    {item.name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label="Drop Rate"
-                value={enemies[selectedItem].drop_rate}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("drop_rate", event.target.value)
-                }
-              >
-                {dropRates.map((rate, index) => (
-                  <option key={index} value={index}>
-                    {rate}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-
+            <Grid item xs={12}></Grid>
             {[...new Array(4)].map((_, index) => (
               <Fragment key={index}>
                 <Grid key={index} item xs={3}>
@@ -298,6 +215,92 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
                 </Grid>
               </Fragment>
             ))}
+            <Grid item xs={12}></Grid>
+            {[...new Array(8)].map((_, index) => (
+              <Grid key={index} item xs={3}>
+                <TextField
+                  select
+                  label={`${t("inputs.ability")} ${index + 1}`}
+                  value={enemies[selectedItem][`ability_${index + 1}`]}
+                  fullWidth
+                  SelectProps={{
+                    native: true,
+                  }}
+                  onChange={(event) =>
+                    handleChange(`ability_${index + 1}`, event.target.value)
+                  }
+                >
+                  {abilities.map((ability: Ability, index: number) => (
+                    <option key={index} value={index}>
+                      {ability.name}
+                    </option>
+                  ))}
+                </TextField>
+              </Grid>
+            ))}
+            <Grid item xs={12}></Grid>
+            <Grid item xs={3}>
+              <TextField
+                type="number"
+                label={t("inputs.experience")}
+                value={enemies[selectedItem].experience}
+                fullWidth
+                inputProps={{ step: 1, min: 0, max: 65535 }}
+                onChange={(event) =>
+                  handleChange("experience", event.target.value)
+                }
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                type="number"
+                label={t("inputs.coins")}
+                value={enemies[selectedItem].coins}
+                fullWidth
+                inputProps={{ step: 1, min: 0, max: 65535 }}
+                onChange={(event) => handleChange("coins", event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label="Drop Item"
+                value={enemies[selectedItem].drop_item}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("drop_item", event.target.value)
+                }
+              >
+                {items.map((item: Item, index: number) => (
+                  <option key={index} value={index}>
+                    {item.name}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label="Drop Rate"
+                value={enemies[selectedItem].drop_rate}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("drop_rate", event.target.value)
+                }
+              >
+                {dropRates.map((rate, index) => (
+                  <option key={index} value={index}>
+                    {rate}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
           </Grid>
         </View>
       </div>

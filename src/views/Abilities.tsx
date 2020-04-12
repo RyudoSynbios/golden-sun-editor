@@ -228,45 +228,7 @@ function Abilities({ abilities, onChange }: any) {
                 disabled
               />
             </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label={t("inputs.attribute")}
-                value={abilities[selectedItem].attribute}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("attribute", event.target.value)
-                }
-              >
-                {attributes.map((attribute, index) => (
-                  <option key={index} value={index}>
-                    {attribute}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label={t("inputs.effect")}
-                value={abilities[selectedItem].effect}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) => handleChange("effect", event.target.value)}
-              >
-                {effects.map((effect, index) => (
-                  <option key={index} value={index}>
-                    {effect}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <TextField
                 select
                 label={t("inputs.target")}
@@ -282,6 +244,27 @@ function Abilities({ abilities, onChange }: any) {
                     {target}
                   </option>
                 ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label={t("inputs.range")}
+                value={abilities[selectedItem].range}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) => handleChange("range", event.target.value)}
+              >
+                {ranges.map(
+                  (range, index) =>
+                    range !== "" && (
+                      <option key={index} value={index}>
+                        {range}
+                      </option>
+                    )
+                )}
               </TextField>
             </Grid>
             <Grid item xs={3}>
@@ -306,29 +289,7 @@ function Abilities({ abilities, onChange }: any) {
                 onChange={(event) => handleChange("power", event.target.value)}
               />
             </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label={t("inputs.range")}
-                value={abilities[selectedItem].range}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) => handleChange("range", event.target.value)}
-              >
-                {ranges.map(
-                  (range, index) =>
-                    range !== "" && (
-                      <option key={index} value={index}>
-                        {range}
-                      </option>
-                    )
-                )}
-              </TextField>
-            </Grid>
-
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <TextField
                 select
                 label={t("inputs.type")}
@@ -347,7 +308,45 @@ function Abilities({ abilities, onChange }: any) {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label={t("inputs.attribute")}
+                value={abilities[selectedItem].attribute}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("attribute", event.target.value)
+                }
+              >
+                {attributes.map((attribute, index) => (
+                  <option key={index} value={index}>
+                    {attribute}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label={t("inputs.effect")}
+                value={abilities[selectedItem].effect}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) => handleChange("effect", event.target.value)}
+              >
+                {effects.map((effect, index) => (
+                  <option key={index} value={index}>
+                    {effect}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={3}>
               <TextField
                 select
                 label={t("inputs.utility")}

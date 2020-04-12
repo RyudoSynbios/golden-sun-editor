@@ -167,7 +167,7 @@ function Items({ items, abilities, onChange }: any) {
                 )}
               </TextField>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <TextField
                 type="number"
                 label={t("inputs.price")}
@@ -177,89 +177,7 @@ function Items({ items, abilities, onChange }: any) {
                 onChange={(event) => handleChange("price", event.target.value)}
               />
             </Grid>
-            <Grid item xs={2}>
-              <TextField
-                type="number"
-                label={t("inputs.attack")}
-                inputProps={{ step: 1, min: 0, max: 32767 }}
-                value={items[selectedItem].attack}
-                fullWidth
-                onChange={(event) => handleChange("attack", event.target.value)}
-              />
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                type="number"
-                label={t("inputs.defense")}
-                inputProps={{ step: 1, min: 0, max: 127 }}
-                value={items[selectedItem].defense}
-                fullWidth
-                onChange={(event) =>
-                  handleChange("defense", event.target.value)
-                }
-              />
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label={t("inputs.unleash")}
-                value={items[selectedItem].unleash}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("unleash", event.target.value)
-                }
-              >
-                {abilities.map((ability: Ability, index: number) => (
-                  <option key={index} value={index}>
-                    {ability.name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label={t("inputs.unleashRate")}
-                value={items[selectedItem].unleash_rate}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("unleash_rate", event.target.value)
-                }
-              >
-                {unleashRates.map((rate, index) => (
-                  <option key={index} value={index}>
-                    {rate}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={2}>
-              <TextField
-                select
-                label="Use"
-                value={items[selectedItem].ability_on_use}
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                onChange={(event) =>
-                  handleChange("ability_on_use", event.target.value)
-                }
-              >
-                {abilities.map((ability: Ability, index: number) => (
-                  <option key={index} value={index}>
-                    {ability.name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <TextField
                 select
                 label="Uses"
@@ -277,7 +195,29 @@ function Items({ items, abilities, onChange }: any) {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
+              <TextField
+                type="number"
+                label={t("inputs.attack")}
+                inputProps={{ step: 1, min: 0, max: 32767 }}
+                value={items[selectedItem].attack}
+                fullWidth
+                onChange={(event) => handleChange("attack", event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                type="number"
+                label={t("inputs.defense")}
+                inputProps={{ step: 1, min: 0, max: 127 }}
+                value={items[selectedItem].defense}
+                fullWidth
+                onChange={(event) =>
+                  handleChange("defense", event.target.value)
+                }
+              />
+            </Grid>
+            <Grid item xs={3}>
               <TextField
                 type="text"
                 label="Characters"
@@ -286,7 +226,7 @@ function Items({ items, abilities, onChange }: any) {
                 disabled
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <TextField
                 type="text"
                 label={t("inputs.icon")}
@@ -295,7 +235,7 @@ function Items({ items, abilities, onChange }: any) {
                 disabled
               />
             </Grid>
-
+            <Grid item xs={12}></Grid>
             {[...new Array(4)].map((_, index) => (
               <Fragment key={index}>
                 <Grid key={index} item xs={3}>
@@ -335,6 +275,67 @@ function Items({ items, abilities, onChange }: any) {
                 </Grid>
               </Fragment>
             ))}
+            <Grid item xs={12}></Grid>
+            <Grid item xs={4}>
+              <TextField
+                select
+                label={t("inputs.unleash")}
+                value={items[selectedItem].unleash}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("unleash", event.target.value)
+                }
+              >
+                {abilities.map((ability: Ability, index: number) => (
+                  <option key={index} value={index}>
+                    {ability.name}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                select
+                label={t("inputs.unleashRate")}
+                value={items[selectedItem].unleash_rate}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("unleash_rate", event.target.value)
+                }
+              >
+                {unleashRates.map((rate, index) => (
+                  <option key={index} value={index}>
+                    {rate}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                select
+                label="Use"
+                value={items[selectedItem].ability_on_use}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) =>
+                  handleChange("ability_on_use", event.target.value)
+                }
+              >
+                {abilities.map((ability: Ability, index: number) => (
+                  <option key={index} value={index}>
+                    {ability.name}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
             <Grid item xs={12}>
               {Object.keys(specials).map((item, index) => {
                 const text = Object.values(specials)[index];
