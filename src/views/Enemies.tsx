@@ -146,7 +146,7 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 type="number"
-                label="HP Regen"
+                label={t("inputs.hpRegen")}
                 value={enemies[selectedItem].hp_regen}
                 fullWidth
                 inputProps={{ step: 1, min: 0, max: 255 }}
@@ -158,7 +158,7 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 type="number"
-                label="PP Regen"
+                label={t("inputs.ppRegen")}
                 value={enemies[selectedItem].pp_regen}
                 fullWidth
                 inputProps={{ step: 1, min: 0, max: 255 }}
@@ -264,7 +264,7 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 select
-                label="Drop Item"
+                label={t("inputs.drop")}
                 value={enemies[selectedItem].drop_item}
                 fullWidth
                 SelectProps={{
@@ -284,7 +284,7 @@ function Enemies({ enemies, items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 select
-                label="Drop Rate"
+                label={t("inputs.dropRate")}
                 value={enemies[selectedItem].drop_rate}
                 fullWidth
                 SelectProps={{

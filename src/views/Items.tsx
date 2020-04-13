@@ -180,7 +180,7 @@ function Items({ items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 select
-                label="Uses"
+                label={t("inputs.uses")}
                 value={items[selectedItem].uses}
                 fullWidth
                 SelectProps={{
@@ -220,7 +220,7 @@ function Items({ items, abilities, onChange }: any) {
             <Grid item xs={3}>
               <TextField
                 type="text"
-                label="Characters"
+                label={t("inputs.characters")}
                 value={items[selectedItem].characters}
                 fullWidth
                 disabled
@@ -319,7 +319,7 @@ function Items({ items, abilities, onChange }: any) {
             <Grid item xs={4}>
               <TextField
                 select
-                label="Use"
+                label={t("inputs.use")}
                 value={items[selectedItem].ability_on_use}
                 fullWidth
                 SelectProps={{
