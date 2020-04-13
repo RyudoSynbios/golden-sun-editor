@@ -4,7 +4,8 @@
       "dropzone": "Drag 'n' drop a Golden Sun rom here, or click to select a file.",
       "dropzoneActive": "Drop the rom here...",
       "notGoldenSun": "Not a Golden Sun Rom.",
-      "notAvailable": "This Golden Sun rom is not yet compatible."
+      "notAvailable": "This Golden Sun rom is not yet compatible.",
+      "save": "Save"
     },
     "sections": {
       "abilities": "Abilities",

@@ -151,8 +151,9 @@ function App() {
                   color="primary"
                   disabled={changes.length === 0}
                   onClick={handleSave}
+                  startIcon={<SaveIcon />}
                 >
-                  <SaveIcon />
+                  {t("general.save")}
                 </Button>
               </Toolbar>
             </AppBar>
