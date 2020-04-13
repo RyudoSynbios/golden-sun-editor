@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     margin: theme.spacing(1),
+    padding: theme.spacing(1),
     width: 600,
     height: 400,
     cursor: "pointer",
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     width: 100,
   },
   content: {
-    minHeight: 60,
+    minHeight: 72,
     textAlign: "center",
   },
 }));
@@ -76,7 +77,7 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
               </>
             )}
             {isLoading && <CircularProgress color="primary" />}
-            {!isLoading && error !== "" && (
+            {!isLoading && !isDragActive && error !== "" && (
               <Typography color="textSecondary">{error}</Typography>
             )}
           </div>
