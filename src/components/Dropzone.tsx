@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -22,15 +23,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     userSelect: "none",
   },
-  paper: {
+  dropzone: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    margin: theme.spacing(1),
     width: 600,
     height: 400,
     cursor: "pointer",
     outline: "none",
+    border: `2px dashed ${theme.palette.primary.main}`,
   },
   logo: {
     marginBottom: theme.spacing(5),
@@ -55,21 +58,27 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper} {...getRootProps()}>
-        <img src="img/logo.png" alt="logo" className={classes.logo} />
-        <div className={classes.content}>
-          {!isLoading && (
-            <>
-              <input {...getInputProps()} />
-              <div>
-                {t(
-                  !isDragActive ? "general.dropzone" : "general.dropzoneActive"
-                )}
-              </div>
-            </>
-          )}
-          {isLoading && <CircularProgress color="primary" />}
-          {!isLoading && error !== "" && <div>{error}</div>}
+      <Paper>
+        <div className={classes.dropzone} {...getRootProps()}>
+          <img src="img/logo.png" alt="logo" className={classes.logo} />
+          <div className={classes.content}>
+            {!isLoading && (
+              <>
+                <input {...getInputProps()} />
+                <Typography>
+                  {t(
+                    !isDragActive
+                      ? "general.dropzone"
+                      : "general.dropzoneActive"
+                  )}
+                </Typography>
+              </>
+            )}
+            {isLoading && <CircularProgress color="primary" />}
+            {!isLoading && error !== "" && (
+              <Typography color="textSecondary">{error}</Typography>
+            )}
+          </div>
         </div>
       </Paper>
     </div>
