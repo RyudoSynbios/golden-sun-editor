@@ -36,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
     border: `2px dashed ${theme.palette.primary.main}`,
   },
   logo: {
+    marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
-    width: 200,
+    width: 100,
   },
   content: {
     minHeight: 60,
@@ -60,7 +61,7 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
     <div className={classes.root}>
       <Paper>
         <div className={classes.dropzone} {...getRootProps()}>
-          <img src="img/logo.png" alt="logo" className={classes.logo} />
+          <img src="img/icon.png" alt="logo" className={classes.logo} />
           <div className={classes.content}>
             {!isLoading && (
               <>
