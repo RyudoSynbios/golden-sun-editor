@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import LanguageSwitcher from "./LanguageSwitcher";
+
 interface DropzoneProps {
   isLoading: boolean;
   error: string;
@@ -22,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     userSelect: "none",
+  },
+  paper: {
+    position: "relative",
   },
   dropzone: {
     display: "flex",
@@ -45,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 72,
     textAlign: "center",
   },
+  language: {
+    position: "absolute",
+    right: 10,
+    bottom: 10,
+  },
 }));
 
 function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
@@ -60,7 +70,7 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
 
   return (
     <div className={classes.root}>
-      <Paper>
+      <Paper className={classes.paper}>
         <div className={classes.dropzone} {...getRootProps()}>
           <img src="img/icon.png" alt="logo" className={classes.logo} />
           <div className={classes.content}>
@@ -81,6 +91,9 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
               <Typography color="textSecondary">{error}</Typography>
             )}
           </div>
+        </div>
+        <div className={classes.language}>
+          <LanguageSwitcher />
         </div>
       </Paper>
     </div>
