@@ -88,7 +88,9 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
             )}
             {isLoading && <CircularProgress color="primary" />}
             {!isLoading && !isDragActive && error !== "" && (
-              <Typography color="textSecondary">{error}</Typography>
+              <Typography color="textSecondary">
+                {t(`errors.${error}`)}
+              </Typography>
             )}
           </div>
         </div>

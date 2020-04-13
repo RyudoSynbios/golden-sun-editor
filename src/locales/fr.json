@@ -3,9 +3,11 @@
     "general": {
       "dropzone": "Glissez/Déposez une rom Golden Sun ici, ou cliquez pour sélectionner un fichier.",
       "dropzoneActive": "Déposez la rom ici...",
-      "notGoldenSun": "Ce fichier n'est pas une rom Golden Sun.",
-      "notAvailable": "Cette rom Golden Sun n'est pas encore compatible.",
       "save": "Enregistrer"
+    },
+    "errors": {
+      "notGoldenSun": "Ce fichier n'est pas une rom Golden Sun.",
+      "notAvailable": "Cette rom Golden Sun n'est pas encore compatible."
     },
     "sections": {
       "abilities": "Capacités",

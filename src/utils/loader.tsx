@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { itemSpecial } from "./correspondances";
 import HexEditor from "./hexEditor";
-import i18n from "./i18n";
 import getTexts from "./texts";
 
 import addresses from "./addresses";
@@ -174,11 +173,11 @@ function loader(
 
     if (game.zone === -1) {
       setIsLoading(false);
-      setError(i18n.t("general.notGoldenSun"));
+      setError("notGoldenSun");
       return;
     } else if (game.zone !== 0 && game.zone !== 4) {
       setIsLoading(false);
-      setError(i18n.t("general.notAvailable"));
+      setError("notAvailable");
       return;
     }
 
