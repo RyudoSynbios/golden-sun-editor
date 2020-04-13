@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     overflow: "hidden",
   },
   content: {
+    flex: 1,
     display: "flex",
     overflow: "hidden",
   },

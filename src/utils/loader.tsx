@@ -14,7 +14,7 @@ export interface Game {
   summons: Summon[];
   enemies: Enemy[];
   groups: Group[];
-  texts: string[];
+  texts: Text[];
 }
 
 export interface Item {
@@ -134,6 +134,11 @@ export interface Group {
   maximum_5: number;
 }
 
+export interface Text {
+  index: number;
+  text: string;
+}
+
 export const initialStateGame: Game = {
   zone: -1,
   items: [],
@@ -193,13 +198,13 @@ function loader(
         );
       });
 
-      item.name = game.texts[addresses.items.name[game.zone] + i].replace(
+      item.name = game.texts[addresses.items.name[game.zone] + i].text.replace(
         /\{.*?\}/g,
         ""
       );
       item.description = game.texts[
         addresses.items.description[game.zone] + i
-      ].replace(/\{.*?\}/g, "");
+      ].text.replace(/\{.*?\}/g, "");
       item.special = itemSpecial(item.special);
 
       game.items.push(item);
@@ -220,10 +225,10 @@ function loader(
 
       ability.name = game.texts[
         addresses.abilities.name[game.zone] + i
-      ].replace(/\{.*?\}/g, "");
+      ].text.replace(/\{.*?\}/g, "");
       ability.description = game.texts[
         addresses.abilities.description[game.zone] + i
-      ].replace(/\{.*?\}/g, "");
+      ].text.replace(/\{.*?\}/g, "");
 
       game.abilities.push(ability);
     }
@@ -241,13 +246,12 @@ function loader(
         );
       });
 
-      djinni.name = game.texts[addresses.djinn.name[game.zone] + i].replace(
-        /\{.*?\}/g,
-        ""
-      );
+      djinni.name = game.texts[
+        addresses.djinn.name[game.zone] + i
+      ].text.replace(/\{.*?\}/g, "");
       djinni.description = game.texts[
         addresses.djinn.description[game.zone] + i
-      ].replace(/\{.*?\}/g, "");
+      ].text.replace(/\{.*?\}/g, "");
 
       game.djinn.push(djinni);
     }
@@ -287,10 +291,9 @@ function loader(
         );
       });
 
-      enemy.name = game.texts[addresses.enemies.name[game.zone] + i].replace(
-        /\{.*?\}/g,
-        ""
-      );
+      enemy.name = game.texts[
+        addresses.enemies.name[game.zone] + i
+      ].text.replace(/\{.*?\}/g, "");
 
       game.enemies.push(enemy);
     }

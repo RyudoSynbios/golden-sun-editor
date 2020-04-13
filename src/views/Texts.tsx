@@ -1,17 +1,9 @@
 import React from "react";
 
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
-
 import { makeStyles } from "@material-ui/core/styles";
 
 import View from "../components/View";
-
-interface TextsProps {
-  texts: string[];
-}
+import VirtualizedTable from "../components/VirtualizedTable";
 
 const useStyles = makeStyles({
   root: {
@@ -25,23 +17,27 @@ const useStyles = makeStyles({
   },
 });
 
-function Texts({ texts }: TextsProps) {
+function Texts({ texts }: any) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <div className={classes.content}>
         <View>
-          <Table>
-            <TableBody>
-              {texts.map((text: string, index: number) => (
-                <TableRow key={index}>
-                  <TableCell align="right">{index}</TableCell>
-                  <TableCell>{text}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <VirtualizedTable
+            rowCount={texts.length}
+            rowGetter={({ index }: any) => texts[index]}
+            columns={[
+              {
+                width: 72,
+                dataKey: "index",
+                align: "right",
+              },
+              {
+                dataKey: "text",
+              },
+            ]}
+          />
         </View>
       </div>
     </div>

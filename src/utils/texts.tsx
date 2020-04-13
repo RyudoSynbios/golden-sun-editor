@@ -158,7 +158,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
 
           text += symbol;
           if (charToInt === 0) {
-            texts.push(text);
+            texts.push({ index: texts.length, text });
             text = "";
             break;
           }
@@ -186,7 +186,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
               lastCharacterDecoded = charToInt;
               text += symbol;
               if (charToInt === 0) {
-                texts.push(text);
+                texts.push({ index: texts.length, text });
                 text = "";
                 break;
               }
@@ -201,7 +201,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
         }
       }
       if (text !== "") {
-        texts.push("DECODE ERROR!");
+        texts.push({ index: texts.length, text: "DECODE ERROR!" });
       }
     }
     textBitstream += 0x8;
