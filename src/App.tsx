@@ -51,7 +51,11 @@ function App() {
 
   function handleFileChange(file: File) {
     setIsLoading(true);
-    setRom(loader(file, setIsLoading, setError, setGame));
+    // TODO: Without setTimeout, the CircularProgress is not complete, waiting for a fix
+    setTimeout(
+      () => setRom(loader(file, setIsLoading, setError, setGame)),
+      500
+    );
   }
 
   function handleTabChange(_: ChangeEvent<{}>, tab: string) {
