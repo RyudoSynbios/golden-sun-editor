@@ -72,7 +72,7 @@ function Dropzone({ isLoading, error, onChange }: DropzoneProps) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <div className={classes.dropzone} {...getRootProps()}>
-          <img src="img/icon.png" alt="logo" className={classes.logo} />
+          <img src="img/icon.png" alt="Icon" className={classes.logo} />
           <div className={classes.content}>
             {!isLoading && (
               <>
