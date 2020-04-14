@@ -3,43 +3,50 @@ const addresses = {
     offset: 0xa0,
     length: 0x12,
     values: [
-      "GOLDEN_SUN_AAGSF01", // France
-      "GOLDEN_SUN_AAGSD01", // Germany
-      "GOLDEN_SUN_AAGSI01", // Italy
-      "GOLDEN_SUN_AAGSS01", // Spain
-      "Golden_Sun_AAGSE01", // USA-Europe
+      "Golden_Sun_AAGSE01", // Golden Sun 1: Europe-USA
+      "GOLDEN_SUN_AAGSF01", // Golden Sun 1: France
+      "GOLDEN_SUN_AAGSD01", // Golden Sun 1: Germany
+      "GOLDEN_SUN_AAGSI01", // Golden Sun 1: Italy
+      "GOLDEN_SUN_AAGSS01", // Golden Sun 1: Spain
+      "OugonTaiyo_AAGSJ01", // Golden Sun 1: Japan
+      "GOLDEN_SUN_BAGFE01", // Golden Sun 2: Europe-USA
+      "GOLDEN_SUN_BAGFF01", // Golden Sun 2: France
+      "GOLDEN_SUN_BAGFD01", // Golden Sun 2: Germany
+      "GOLDEN_SUN_BAGFI01", // Golden Sun 2: Italy
+      "GOLDEN_SUN_BAGFS01", // Golden Sun 2: Spain
+      "OUGONTAIYO_BAGFJ01", // Golden Sun 2: Japan
     ],
   },
   messages: [
-    0x1456c, // France
-    0x1426c, // Germany
-    0x1556c, // Italy
-    0x1456c, // Spain
-    0x1556c, // USA-Europe
+    0x1556c, // Golden Sun 1: Europe-USA
+    0x1456c, // Golden Sun 1: France
+    0x1426c, // Golden Sun 1: Germany
+    0x1556c, // Golden Sun 1: Italy
+    0x1456c, // Golden Sun 1: Spain
   ],
   items: {
     pointer: [
-      0x7d428, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x78428, // USA-Europe
+      0x78428, // Golden Sun 1: Europe-USA
+      0x7d428, // Golden Sun 1: France
+      0x7c228, // Golden Sun 1: Germany
+      0x78428, // Golden Sun 1: Italy
+      0x7d428, // Golden Sun 1: Spain
     ],
     length: 0x10d,
     section_length: 0x2c,
     name: [
-      0x16c, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x182, // USA-Europe
+      0x182, // Golden Sun 1: Europe-USA
+      0x16c, // Golden Sun 1: France
+      0x16c, // Golden Sun 1: Germany
+      0x16c, // Golden Sun 1: Italy
+      0x16c, // Golden Sun 1: Spain
     ],
     description: [
-      0x5f, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x75, // USA-Europe
+      0x75, // Golden Sun 1: Europe-USA
+      0x5f, // Golden Sun 1: France
+      0x5f, // Golden Sun 1: Germany
+      0x5f, // Golden Sun 1: Italy
+      0x5f, // Golden Sun 1: Spain
     ],
     attributs: {
       price: { offset: 0x0, octets: 16 },
@@ -65,27 +72,27 @@ const addresses = {
   },
   abilities: {
     pointer: [
-      0x7dbbc, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x78bbc, // USA-Europe
+      0x78bbc, // Golden Sun 1: Europe-USA
+      0x7dbbc, // Golden Sun 1: France
+      0x7c9bc, // Golden Sun 1: Germany
+      0x78bbc, // Golden Sun 1: Italy
+      0x7dbbc, // Golden Sun 1: Spain
     ],
     length: 0x207,
     section_length: 0x10,
     name: [
-      0x42a, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x333, // USA-Europe
+      0x333, // Golden Sun 1: Europe-USA
+      0x42a, // Golden Sun 1: France
+      0x42a, // Golden Sun 1: Germany
+      0x42a, // Golden Sun 1: Italy
+      0x42a, // Golden Sun 1: Spain
     ],
     description: [
-      0x631, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x53a, // USA-Europe
+      0x53a, // Golden Sun 1: Europe-USA
+      0x631, // Golden Sun 1: France
+      0x631, // Golden Sun 1: Germany
+      0x631, // Golden Sun 1: Italy
+      0x631, // Golden Sun 1: Spain
     ],
     attributs: {
       target: { offset: 0x0, octets: 8 },
@@ -101,27 +108,27 @@ const addresses = {
   },
   djinn: {
     pointer: [
-      0x7f0f0, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x7a0f0, // USA-Europe
+      0x7a0f0, // Golden Sun 1: Europe-USA
+      0x7f0f0, // Golden Sun 1: France
+      0x7def0, // Golden Sun 1: Germany
+      0x7a0f0, // Golden Sun 1: Italy
+      0x7f0f0, // Golden Sun 1: Spain
     ],
     length: 0x50,
     section_length: 0xc,
     name: [
-      0x556, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x45f, // USA-Europe
+      0x45f, // Golden Sun 1: Europe-USA
+      0x556, // Golden Sun 1: France
+      0x556, // Golden Sun 1: Germany
+      0x556, // Golden Sun 1: Italy
+      0x556, // Golden Sun 1: Spain
     ],
     description: [
-      0x75d, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x666, // USA-Europe
+      0x666, // Golden Sun 1: Europe-USA
+      0x75d, // Golden Sun 1: France
+      0x75d, // Golden Sun 1: Germany
+      0x75d, // Golden Sun 1: Italy
+      0x75d, // Golden Sun 1: Spain
     ],
     attributs: {
       ability: { offset: 0x0, octets: 16 },
@@ -135,11 +142,11 @@ const addresses = {
   },
   summons: {
     pointer: [
-      0x7e7e8, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x797e8, // USA-Europe
+      0x797e8, // Golden Sun 1: Europe-USA
+      0x7e7e8, // Golden Sun 1: France
+      0x7d5e8, // Golden Sun 1: Germany
+      0x797e8, // Golden Sun 1: Italy
+      0x7e7e8, // Golden Sun 1: Spain
     ],
     length: 0x10,
     section_length: 0x8,
@@ -153,20 +160,20 @@ const addresses = {
   },
   enemies: {
     pointer: [
-      0x7e5f0, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x795f0, // USA-Europe
+      0x795f0, // Golden Sun 1: Europe-USA
+      0x7e5f0, // Golden Sun 1: France
+      0x7d3f0, // Golden Sun 1: Germany
+      0x795f0, // Golden Sun 1: Italy
+      0x7e5f0, // Golden Sun 1: Spain
     ],
     length: 0xa4,
     section_length: 0x54,
     name: [
-      0x386, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0x28f, // USA-Europe
+      0x28f, // Golden Sun 1: Europe-USA
+      0x386, // Golden Sun 1: France
+      0x386, // Golden Sun 1: Germany
+      0x386, // Golden Sun 1: Italy
+      0x386, // Golden Sun 1: Spain
     ],
     attributs: {
       level: { offset: 0xf, octets: 8 },
@@ -204,11 +211,11 @@ const addresses = {
   groups: {
     // TODO: find pointer
     offset: [
-      0xc9c61, // France
-      0x0, // Germany
-      0x0, // Italy
-      0x0, // Spain
-      0xc5c49, // USA-Europe
+      0xc5c49, // Golden Sun 1: Europe-USA
+      0xc9c61, // Golden Sun 1: France
+      0xc8261, // Golden Sun 1: Germany
+      0xc5c61, // Golden Sun 1: Italy
+      0xc9c61, // Golden Sun 1: Spain
     ],
     length: 0x17b,
     section_length: 0x10,

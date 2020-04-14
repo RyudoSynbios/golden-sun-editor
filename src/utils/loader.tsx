@@ -177,11 +177,13 @@ function loader(
       setIsLoading(false);
       setError("notGoldenSun");
       return;
-    } else if (game.zone !== 0 && game.zone !== 4) {
+    } else if (game.zone >= 5) {
       setIsLoading(false);
       setError("notAvailable");
       return;
     }
+
+    setError("");
 
     // Get Texts
     game.texts = getTexts(rom, addresses.messages[game.zone]);
