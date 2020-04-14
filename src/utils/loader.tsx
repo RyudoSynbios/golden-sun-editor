@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import cloneDeep from "lodash.clonedeep";
+
 import { itemSpecial } from "./correspondances";
 import HexEditor from "./hexEditor";
 import getTexts from "./texts";
@@ -156,7 +158,7 @@ function loader(
   setGame: Dispatch<SetStateAction<Game>>
 ) {
   const rom = new HexEditor(file, () => {
-    const game = initialStateGame;
+    const game = cloneDeep(initialStateGame);
 
     let checksum = "";
     for (
