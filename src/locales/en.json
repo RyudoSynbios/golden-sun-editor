@@ -1,13 +1,24 @@
 {
   "translations": {
     "general": {
+      "about": "About",
+      "cancel": "Cancel",
+      "close": "Close",
+      "confirm": "Confirm",
       "dropzone": "Drag 'n' drop a Golden Sun rom here, or click to select a file.",
       "dropzoneActive": "Drop the rom here...",
+      "eject": "Eject",
+      "ejectConfirm": "You have unsaved changes, do you really want to eject the rom?",
       "save": "Save"
     },
     "errors": {
       "notGoldenSun": "Not a Golden Sun Rom.",
       "notAvailable": "This Golden Sun rom is not yet compatible."
+    },
+    "about": {
+      "message": "Developed by Ryudo",
+      "specialThanks": "Special Thanks:",
+      "version": "Version:"
     },
     "sections": {
       "abilities": "Abilities",

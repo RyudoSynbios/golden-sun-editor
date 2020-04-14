@@ -12,6 +12,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import SaveIcon from "@material-ui/icons/Save";
 
+import About from "./components/About";
+import AppBarMenu from "./components/AppBarMenu";
+import Confirm from "./components/Confirm";
 import Dropzone from "./components/Dropzone";
 
 import addresses from "./utils/addresses";
@@ -32,6 +35,25 @@ const useStyles = makeStyles({
     flexDirection: "column",
     overflow: "hidden",
   },
+  toolbar: {
+    display: "block",
+    "& > div": {
+      display: "flex",
+    },
+    "& > div:first-child": {
+      alignItems: "flex-end",
+      height: 34,
+    },
+  },
+  logo: {
+    height: 32,
+  },
+  flex: {
+    flex: 1,
+  },
+  toolbarContent: {
+    height: 82,
+  },
   content: {
     flex: 1,
     display: "flex",
@@ -46,9 +68,35 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [rom, setRom] = useState<any>(null);
   const [error, setError] = useState<string>("");
+  const [aboutOpen, setAboutOpen] = useState<boolean>(false);
+  const [ejectOpen, setEjectOpen] = useState<boolean>(false);
   const [game, setGame] = useState<Game>(initialStateGame);
   const [tab, setTab] = useState<string>("items");
   const [changes, setChanges] = useState<any>([]);
+
+  function handleAboutClick() {
+    setAboutOpen(true);
+  }
+
+  function handleAboutClose() {
+    setAboutOpen(false);
+  }
+
+  function handleEject() {
+    setGame(initialStateGame);
+  }
+
+  function handleEjectClick() {
+    if (changes.length > 0) {
+      setEjectOpen(true);
+    } else {
+      handleEject();
+    }
+  }
+
+  function handleEjectClose() {
+    setEjectOpen(false);
+  }
 
   function handleFileChange(file: File) {
     setIsLoading(true);
@@ -132,32 +180,46 @@ function App() {
         )) || (
           <>
             <AppBar color="default" elevation={1}>
-              <Toolbar variant="dense">
-                <Tabs
-                  indicatorColor="primary"
-                  textColor="primary"
-                  value={tab}
-                  onChange={handleTabChange}
-                >
-                  <Tab label={t("sections.items")} value="items" />
-                  <Tab label={t("sections.abilities")} value="abilities" />
-                  <Tab label={t("sections.djinn")} value="djinn" />
-                  <Tab label={t("sections.summons")} value="summons" />
-                  <Tab label={t("sections.enemies")} value="enemies" />
-                  <Tab label={t("sections.groups")} value="groups" />
-                  <Tab label={t("sections.texts")} value="texts" />
-                </Tabs>
-                <Button
-                  color="primary"
-                  disabled={changes.length === 0}
-                  onClick={handleSave}
-                  startIcon={<SaveIcon />}
-                >
-                  {t("general.save")}
-                </Button>
+              <Toolbar variant="dense" className={classes.toolbar}>
+                <div>
+                  <img
+                    src="img/golden-sun-1.png"
+                    alt="Golden Sun 1"
+                    className={classes.logo}
+                  />
+                  <div className={classes.flex} />
+                  <AppBarMenu
+                    onAboutClick={handleAboutClick}
+                    onEjectClick={handleEjectClick}
+                  />
+                </div>
+                <div>
+                  <Tabs
+                    indicatorColor="primary"
+                    textColor="primary"
+                    value={tab}
+                    onChange={handleTabChange}
+                  >
+                    <Tab label={t("sections.items")} value="items" />
+                    <Tab label={t("sections.abilities")} value="abilities" />
+                    <Tab label={t("sections.djinn")} value="djinn" />
+                    <Tab label={t("sections.summons")} value="summons" />
+                    <Tab label={t("sections.enemies")} value="enemies" />
+                    <Tab label={t("sections.groups")} value="groups" />
+                    <Tab label={t("sections.texts")} value="texts" />
+                  </Tabs>
+                  <Button
+                    color="primary"
+                    startIcon={<SaveIcon />}
+                    disabled={changes.length === 0}
+                    onClick={handleSave}
+                  >
+                    {t("general.save")}
+                  </Button>
+                </div>
               </Toolbar>
             </AppBar>
-            <Toolbar variant="dense" />
+            <Toolbar variant="dense" className={classes.toolbarContent} />
             <div className={classes.content}>
               {tab === "items" && (
                 <Items
@@ -200,6 +262,13 @@ function App() {
               )}
               {tab === "texts" && <Texts texts={game.texts} />}
             </div>
+            <About open={aboutOpen} onClose={handleAboutClose} />
+            <Confirm
+              open={ejectOpen}
+              message={t("general.ejectConfirm")}
+              action={handleEject}
+              onClose={handleEjectClose}
+            />
           </>
         )}
       </div>
