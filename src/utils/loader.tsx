@@ -15,6 +15,7 @@ export interface Game {
   summons: Summon[];
   enemies: Enemy[];
   groups: Group[];
+  shops: Shop[];
   texts: Text[];
 }
 
@@ -135,6 +136,33 @@ export interface Group {
   maximum_5: number;
 }
 
+export interface Shop {
+  item_1: string;
+  item_2: string;
+  item_3: string;
+  item_4: string;
+  item_5: string;
+  item_6: string;
+  item_7: string;
+  item_8: string;
+  item_9: string;
+  item_10: string;
+  item_11: string;
+  item_12: string;
+  item_13: string;
+  item_14: string;
+  item_15: string;
+  item_16: string;
+  item_17: string;
+  item_18: string;
+  item_19: string;
+  item_20: string;
+  item_21: string;
+  item_22: string;
+  item_23: string;
+  item_24: string;
+}
+
 export interface Text {
   index: number;
   text: string;
@@ -148,6 +176,7 @@ export const initialStateGame: Game = {
   summons: [],
   enemies: [],
   groups: [],
+  shops: [],
   texts: [],
 };
 
@@ -319,6 +348,24 @@ function loader(
       group.name = group.name.name;
 
       game.groups.push(group);
+    }
+
+    // Get Shops
+    for (let i = 0; i < addresses.shops.length; i += 1) {
+      const shop: any = {};
+      Object.keys(addresses.shops.attributs).forEach((attribut, index) => {
+        const attr = Object.values(addresses.shops.attributs)[index];
+        shop[attribut] = rom.readBytes(
+          rom.readBytes(addresses.shops.pointer[game.zone], 32) +
+            i * addresses.shops.section_length +
+            attr.offset,
+          attr.octets
+        );
+      });
+
+      shop.name = "???";
+
+      game.shops.push(shop);
     }
 
     setGame(game);

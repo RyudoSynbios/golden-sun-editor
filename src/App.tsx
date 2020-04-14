@@ -25,6 +25,7 @@ import Djinn from "./views/Djinn";
 import Enemies from "./views/Enemies";
 import Groups from "./views/Groups";
 import Items from "./views/Items";
+import Shops from "./views/Shops";
 import Summons from "./views/Summons";
 import Texts from "./views/Texts";
 
@@ -206,6 +207,7 @@ function App() {
                     <Tab label={t("sections.summons")} value="summons" />
                     <Tab label={t("sections.enemies")} value="enemies" />
                     <Tab label={t("sections.groups")} value="groups" />
+                    <Tab label={t("sections.shops")} value="shops" />
                     <Tab label={t("sections.texts")} value="texts" />
                   </Tabs>
                   <Button
@@ -257,6 +259,13 @@ function App() {
                 <Groups
                   groups={game.groups}
                   enemies={game.enemies}
+                  onChange={handleChange}
+                />
+              )}
+              {tab === "shops" && (
+                <Shops
+                  shops={game.shops}
+                  items={game.items}
                   onChange={handleChange}
                 />
               )}

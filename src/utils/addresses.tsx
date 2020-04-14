@@ -237,6 +237,43 @@ const addresses = {
       maximum_5: { offset: 0xe, octets: 8 },
     },
   },
+  shops: {
+    pointer: [
+      0xb271c, // Golden Sun 1: Europe-USA
+      0xb671c, // Golden Sun 1: France
+      0xb4d1c, // Golden Sun 1: Germany
+      0xb271c, // Golden Sun 1: Italy
+      0xb671c, // Golden Sun 1: Spain
+    ],
+    length: 0x23,
+    section_length: 0x42,
+    attributs: {
+      item_1: { offset: 0x0, octets: 16 },
+      item_2: { offset: 0x2, octets: 16 },
+      item_3: { offset: 0x4, octets: 16 },
+      item_4: { offset: 0x6, octets: 16 },
+      item_5: { offset: 0x8, octets: 16 },
+      item_6: { offset: 0xa, octets: 16 },
+      item_7: { offset: 0xc, octets: 16 },
+      item_8: { offset: 0xe, octets: 16 },
+      item_9: { offset: 0x10, octets: 16 },
+      item_10: { offset: 0x12, octets: 16 },
+      item_11: { offset: 0x14, octets: 16 },
+      item_12: { offset: 0x16, octets: 16 },
+      item_13: { offset: 0x18, octets: 16 },
+      item_14: { offset: 0x1a, octets: 16 },
+      item_15: { offset: 0x1c, octets: 16 },
+      item_16: { offset: 0x1e, octets: 16 },
+      item_17: { offset: 0x20, octets: 16 },
+      item_18: { offset: 0x22, octets: 16 },
+      item_19: { offset: 0x24, octets: 16 },
+      item_20: { offset: 0x26, octets: 16 },
+      item_21: { offset: 0x28, octets: 16 },
+      item_22: { offset: 0x2a, octets: 16 },
+      item_23: { offset: 0x2c, octets: 16 },
+      item_24: { offset: 0x2e, octets: 16 },
+    },
+  },
 };
 
 export default addresses;
