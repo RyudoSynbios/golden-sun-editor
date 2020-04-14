@@ -23,9 +23,6 @@ interface AppBarMenuProps {
 }
 
 const useStyles = makeStyles((theme) => ({
-  iconButton: {
-    width: 30,
-  },
   menu: {
     "& > li": {
       height: 44,
@@ -53,11 +50,7 @@ function AppBarMenu({ onAboutClick, onEjectClick }: AppBarMenuProps) {
 
   return (
     <>
-      <IconButton
-        size="small"
-        className={classes.iconButton}
-        onClick={handleMenuOpen}
-      >
+      <IconButton onClick={handleMenuOpen}>
         <MoreVertIcon />
       </IconButton>
       <Menu

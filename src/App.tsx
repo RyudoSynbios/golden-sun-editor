@@ -41,18 +41,18 @@ const useStyles = makeStyles({
       display: "flex",
     },
     "& > div:first-child": {
-      alignItems: "flex-end",
-      height: 34,
+      alignItems: "center",
+      height: 48,
     },
   },
   logo: {
-    height: 32,
+    height: 40,
   },
   flex: {
     flex: 1,
   },
   toolbarContent: {
-    height: 82,
+    height: 96,
   },
   content: {
     flex: 1,
