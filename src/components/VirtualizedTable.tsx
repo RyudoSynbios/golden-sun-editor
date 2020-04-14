@@ -17,7 +17,6 @@ const useStyles = makeStyles({
   },
 });
 
-// TODO: findDOMNode was passed an instance of Grid which is inside StrictMode. Instead, add a ref directly to the element you want to reference.
 // TODO: width is mandatory, wait for a fix from react-virtualized
 
 function VirtualizedTable({ columns, headerHeight, ...tableProps }: any) {
