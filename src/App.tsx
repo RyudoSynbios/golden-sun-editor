@@ -21,6 +21,7 @@ import addresses from "./utils/addresses";
 import loader, { Game, initialStateGame } from "./utils/loader";
 
 import Abilities from "./views/Abilities";
+import Classes from "./views/Classes";
 import Djinn from "./views/Djinn";
 import Enemies from "./views/Enemies";
 import Groups from "./views/Groups";
@@ -203,6 +204,7 @@ function App() {
                   >
                     <Tab label={t("sections.items")} value="items" />
                     <Tab label={t("sections.abilities")} value="abilities" />
+                    <Tab label={t("sections.classes")} value="classes" />
                     <Tab label={t("sections.djinn")} value="djinn" />
                     <Tab label={t("sections.summons")} value="summons" />
                     <Tab label={t("sections.enemies")} value="enemies" />
@@ -232,6 +234,13 @@ function App() {
               )}
               {tab === "abilities" && (
                 <Abilities abilities={game.abilities} onChange={handleChange} />
+              )}
+              {tab === "classes" && (
+                <Classes
+                  Classes={game.classes}
+                  abilities={game.abilities}
+                  onChange={handleChange}
+                />
               )}
               {tab === "djinn" && (
                 <Djinn

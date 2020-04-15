@@ -106,6 +106,69 @@ const addresses = {
       utility: { offset: 0xc, octets: 8 },
     },
   },
+  classes: {
+    pointer: [
+      0x79acc, // Golden Sun 1: Europe-USA
+      0x7eacc, // Golden Sun 1: France
+      0x7d8cc, // Golden Sun 1: Germany
+      0x79acc, // Golden Sun 1: Italy
+      0x7eacc, // Golden Sun 1: Spain
+    ],
+    length: 0xcb,
+    section_length: 0x54,
+    name: [
+      0x741, // Golden Sun 1: Europe-USA
+      0x838, // Golden Sun 1: France
+      0x838, // Golden Sun 1: Germany
+      0x838, // Golden Sun 1: Italy
+      0x838, // Golden Sun 1: Spain
+    ],
+    attributs: {
+      type: { offset: 0x0, octets: 8 },
+      venus: { offset: 0x4, octets: 8 },
+      mercury: { offset: 0x5, octets: 8 },
+      mars: { offset: 0x6, octets: 8 },
+      jupiter: { offset: 0x7, octets: 8 },
+      hp: { offset: 0x8, octets: 8 },
+      pp: { offset: 0x9, octets: 8 },
+      attack: { offset: 0xa, octets: 8 },
+      defense: { offset: 0xb, octets: 8 },
+      agility: { offset: 0xc, octets: 8 },
+      luck: { offset: 0xd, octets: 8 },
+      ability_1: { offset: 0x10, octets: 8 },
+      level_1: { offset: 0x11, octets: 8 },
+      ability_2: { offset: 0x14, octets: 8 },
+      level_2: { offset: 0x15, octets: 8 },
+      ability_3: { offset: 0x18, octets: 8 },
+      level_3: { offset: 0x19, octets: 8 },
+      ability_4: { offset: 0x1c, octets: 8 },
+      level_4: { offset: 0x1d, octets: 8 },
+      ability_5: { offset: 0x20, octets: 8 },
+      level_5: { offset: 0x21, octets: 8 },
+      ability_6: { offset: 0x24, octets: 8 },
+      level_6: { offset: 0x25, octets: 8 },
+      ability_7: { offset: 0x28, octets: 8 },
+      level_7: { offset: 0x29, octets: 8 },
+      ability_8: { offset: 0x2c, octets: 8 },
+      level_8: { offset: 0x2d, octets: 8 },
+      ability_9: { offset: 0x30, octets: 8 },
+      level_9: { offset: 0x31, octets: 8 },
+      ability_10: { offset: 0x34, octets: 8 },
+      level_10: { offset: 0x35, octets: 8 },
+      ability_11: { offset: 0x38, octets: 8 },
+      level_11: { offset: 0x39, octets: 8 },
+      ability_12: { offset: 0x3c, octets: 8 },
+      level_12: { offset: 0x3d, octets: 8 },
+      ability_13: { offset: 0x40, octets: 8 },
+      level_13: { offset: 0x41, octets: 8 },
+      ability_14: { offset: 0x44, octets: 8 },
+      level_14: { offset: 0x45, octets: 8 },
+      ability_15: { offset: 0x48, octets: 8 },
+      level_15: { offset: 0x49, octets: 8 },
+      ability_16: { offset: 0x4c, octets: 8 },
+      level_16: { offset: 0x4d, octets: 8 },
+    },
+  },
   djinn: {
     pointer: [
       0x7a0f0, // Golden Sun 1: Europe-USA

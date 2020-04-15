@@ -11,6 +11,7 @@ export interface Game {
   zone: number;
   items: Item[];
   abilities: Ability[];
+  classes: Class[];
   djinn: Djinni[];
   summons: Summon[];
   enemies: Enemy[];
@@ -60,6 +61,53 @@ export interface Ability {
   pp_cost: number;
   power: number;
   utility: string;
+}
+
+export interface Class {
+  name: string;
+  type: number;
+  venus: number;
+  mercury: number;
+  mars: number;
+  jupiter: number;
+  hp: number;
+  pp: number;
+  attack: number;
+  defense: number;
+  agility: number;
+  luck: number;
+  ability_1: string;
+  level_1: number;
+  ability_2: string;
+  level_2: number;
+  ability_3: string;
+  level_3: number;
+  ability_4: string;
+  level_4: number;
+  ability_5: string;
+  level_5: number;
+  ability_6: string;
+  level_6: number;
+  ability_7: string;
+  level_7: number;
+  ability_8: string;
+  level_8: number;
+  ability_9: string;
+  level_9: number;
+  ability_10: string;
+  level_10: number;
+  ability_11: string;
+  level_11: number;
+  ability_12: string;
+  level_12: number;
+  ability_13: string;
+  level_13: number;
+  ability_14: string;
+  level_14: number;
+  ability_15: string;
+  level_15: number;
+  ability_16: string;
+  level_16: number;
 }
 
 export interface Djinni {
@@ -172,6 +220,7 @@ export const initialStateGame: Game = {
   zone: -1,
   items: [],
   abilities: [],
+  classes: [],
   djinn: [],
   summons: [],
   enemies: [],
@@ -263,6 +312,26 @@ function loader(
       ].text.replace(/\{.*?\}/g, "");
 
       game.abilities.push(ability);
+    }
+
+    // Get Classes
+    for (let i = 0; i < addresses.classes.length; i += 1) {
+      const Class: any = {};
+      Object.keys(addresses.classes.attributs).forEach((attribut, index) => {
+        const attr = Object.values(addresses.classes.attributs)[index];
+        Class[attribut] = rom.readBytes(
+          rom.readBytes(addresses.classes.pointer[game.zone], 32) +
+            i * addresses.classes.section_length +
+            attr.offset,
+          attr.octets
+        );
+      });
+
+      Class.name = game.texts[
+        addresses.classes.name[game.zone] + i
+      ].text.replace(/\{.*?\}/g, "");
+
+      game.classes.push(Class);
     }
 
     // Get Djinn
