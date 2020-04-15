@@ -337,6 +337,27 @@ const addresses = {
       item_24: { offset: 0x2e, octets: 16 },
     },
   },
+  sprites: {
+    pointer: [
+      0x185020, // Golden Sun 1: Europe-USA
+      0x187820, // Golden Sun 1: France
+      0x185e20, // Golden Sun 1: Germany
+      0x185020, // Golden Sun 1: Italy
+      0x187820, // Golden Sun 1: Spain
+    ],
+    length: 0x200,
+    section_length: 0x14,
+    attributs: {
+      width: { offset: 0x0, octets: 8 },
+      height: { offset: 0x01, octets: 8 },
+      scale: { offset: 0x02, octets: 16 },
+      directions: { offset: 0x04, octets: 8 },
+      animations: { offset: 0x05, octets: 8 },
+      offset_x: { offset: 0x06, octets: 8 },
+      offset_y: { offset: 0x07, octets: 8 },
+      collision_diameter: { offset: 0x09, octets: 8 },
+    },
+  },
 };
 
 export default addresses;

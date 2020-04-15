@@ -17,6 +17,7 @@ export interface Game {
   enemies: Enemy[];
   groups: Group[];
   shops: Shop[];
+  sprites: Sprite[];
   texts: Text[];
 }
 
@@ -211,6 +212,16 @@ export interface Shop {
   item_24: string;
 }
 
+export interface Sprite {
+  width: number;
+  height: number;
+  scale: number;
+  directions: number;
+  animations: number;
+  offset_x: number;
+  offset_y: number;
+}
+
 export interface Text {
   index: number;
   text: string;
@@ -226,6 +237,7 @@ export const initialStateGame: Game = {
   enemies: [],
   groups: [],
   shops: [],
+  sprites: [],
   texts: [],
 };
 
@@ -435,6 +447,24 @@ function loader(
       shop.name = "???";
 
       game.shops.push(shop);
+    }
+
+    // Get Sprites
+    for (let i = 0; i < addresses.sprites.length; i += 1) {
+      const sprite: any = {};
+      Object.keys(addresses.sprites.attributs).forEach((attribut, index) => {
+        const attr = Object.values(addresses.sprites.attributs)[index];
+        sprite[attribut] = rom.readBytes(
+          rom.readBytes(addresses.sprites.pointer[game.zone], 32) +
+            i * addresses.sprites.section_length +
+            attr.offset,
+          attr.octets
+        );
+      });
+
+      sprite.name = "???";
+
+      game.sprites.push(sprite);
     }
 
     setGame(game);

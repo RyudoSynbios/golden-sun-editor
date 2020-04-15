@@ -28,6 +28,7 @@
       "groups": "Groups",
       "items": "Items",
       "shops": "Shops",
+      "sprites": "Sprites",
       "summons": "Summons",
       "texts": "Texts"
     },
@@ -40,17 +41,21 @@
     "inputs": {
       "ability": "Ability",
       "agility": "Agility",
+      "animations": "Animations",
       "attack": "Attack",
       "attribute": "Attribute",
       "characters": "Characters",
+      "collisionDiameter": "Collision Diameter",
       "coins": "Coins",
       "defense": "Defense",
       "description": "Description",
+      "directions": "Directions",
       "drop": "Drop",
       "dropRate": "Drop Rate",
       "effect": "Effect",
       "enemy": "Enemy",
       "experience": "Experience",
+      "height": "Height",
       "hp": "HP",
       "hpRegen": "HP Regen",
       "icon": "Icon",
@@ -60,6 +65,8 @@
       "maximum": "Maximum",
       "minimum": "Minimum",
       "name": "Name",
+      "offsetX": "Offset X",
+      "offsetY": "Offset Y",
       "power": "Power",
       "pp": "PP",
       "ppCost": "PP Cost",
@@ -67,6 +74,7 @@
       "price": "Price",
       "quantity": "Quantity",
       "range": "Range",
+      "scale": "Scale",
       "target": "Target",
       "turns": "Turns",
       "type": "Type",
@@ -74,7 +82,8 @@
       "unleashRate": "Unleash Rate",
       "use": "Use",
       "uses": "Uses",
-      "utility": "Utilities"
+      "utility": "Utilities",
+      "width": "Width"
     }
   }
 }

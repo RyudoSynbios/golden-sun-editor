@@ -28,6 +28,7 @@
       "groups": "Groupes",
       "items": "Objets",
       "shops": "Boutiques",
+      "sprites": "Sprites",
       "summons": "Invocations",
       "texts": "Textes"
     },
@@ -40,17 +41,21 @@
     "inputs": {
       "ability": "Capacité",
       "agility": "Agilité",
+      "animations": "Animations",
       "attack": "Attaque",
       "attribute": "Attriibut",
       "characters": "Personnages",
       "coins": "Pièces",
+      "collisionDiameter": "Diamètre de collision",
       "defense": "Défense",
       "description": "Description",
+      "directions": "Directions",
       "drop": "Butin",
       "dropRate": "Chance d'obtention",
       "effect": "Effet",
       "enemy": "Ennemi",
       "experience": "Expérience",
+      "height": "Hauteur",
       "hp": "PV",
       "hpRegen": "Regain PV",
       "icon": "Icône",
@@ -60,6 +65,8 @@
       "maximum": "Maximum",
       "minimum": "Minimum",
       "name": "Nom",
+      "offsetX": "Offset X",
+      "offsetY": "Offset Y",
       "power": "Puissance",
       "pp": "PP",
       "ppCost": "Coût PP",
@@ -67,6 +74,7 @@
       "price": "Prix",
       "quantity": "Quantité",
       "range": "Portée",
+      "scale": "Échelle",
       "target": "Cible",
       "turns": "Tours",
       "type": "Type",
@@ -74,7 +82,8 @@
       "unleashRate": "Taux déchaînement",
       "use": "Utiliser",
       "uses": "Utilisations",
-      "utility": "Utilité"
+      "utility": "Utilité",
+      "width": "Largeur"
     }
   }
 }
