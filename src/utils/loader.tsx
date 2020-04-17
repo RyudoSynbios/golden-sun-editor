@@ -3,6 +3,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { itemSpecial } from "./correspondances";
 import HexEditor from "./hexEditor";
+import { getCompressedIcons, getPalette } from "./graphics";
 import getTexts from "./texts";
 
 import addresses from "./addresses";
@@ -19,6 +20,7 @@ export interface Game {
   shops: Shop[];
   sprites: Sprite[];
   texts: Text[];
+  graphics: Graphics;
 }
 
 export interface Item {
@@ -227,6 +229,17 @@ export interface Text {
   text: string;
 }
 
+export interface Graphics {
+  palette: any;
+  icons: Icons;
+}
+
+export interface Icons {
+  items: any;
+  abilities: any;
+  status: any;
+}
+
 export const initialStateGame: Game = {
   zone: -1,
   items: [],
@@ -239,6 +252,14 @@ export const initialStateGame: Game = {
   shops: [],
   sprites: [],
   texts: [],
+  graphics: {
+    palette: [],
+    icons: {
+      items: [],
+      abilities: [],
+      status: [],
+    },
+  },
 };
 
 function loader(
@@ -466,6 +487,27 @@ function loader(
 
       game.sprites.push(sprite);
     }
+
+    // Get Palette
+    game.graphics.palette = getPalette(
+      rom,
+      addresses.graphics.palette.pointer[game.zone],
+      addresses.graphics.palette.length
+    );
+
+    // Get Icons
+    game.graphics.icons.items = getCompressedIcons(
+      rom,
+      rom.readBytes(addresses.graphics.icons.items.pointer[game.zone], 32)
+    );
+    game.graphics.icons.abilities = getCompressedIcons(
+      rom,
+      rom.readBytes(addresses.graphics.icons.abilities.pointer[game.zone], 32)
+    );
+    game.graphics.icons.status = getCompressedIcons(
+      rom,
+      rom.readBytes(addresses.graphics.icons.status.pointer[game.zone], 32)
+    );
 
     setGame(game);
     setIsLoading(false);

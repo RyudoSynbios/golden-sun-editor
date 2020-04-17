@@ -6,8 +6,11 @@ import TextField from "@material-ui/core/TextField";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import IconSelector from "../components/IconSelector";
 import List from "../components/List";
 import View from "../components/View";
+
+import { decompressIcons } from "../utils/graphics";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Abilities({ abilities, onChange }: any) {
+function Abilities({ abilities, graphics, onChange }: any) {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -184,6 +187,10 @@ function Abilities({ abilities, onChange }: any) {
   const ranges = ["0", "1", "3", "5", "7", "", "9"];
   ranges[255] = "11";
 
+  const icons = graphics.icons.abilities.map((icon: any) =>
+    decompressIcons(icon, graphics.palette)
+  );
+
   function handleClick(index: number) {
     setSelectedItem(index);
   }
@@ -202,6 +209,13 @@ function Abilities({ abilities, onChange }: any) {
         />
         <View>
           <Grid container spacing={3}>
+            <Grid item xs={1}>
+              <IconSelector
+                icons={icons}
+                value={abilities[selectedItem].icon}
+                onChange={(value) => handleChange("icon", value)}
+              />
+            </Grid>
             <Grid item xs={3}>
               <TextField
                 type="text"
@@ -215,15 +229,6 @@ function Abilities({ abilities, onChange }: any) {
               <TextField
                 label={t("inputs.description")}
                 value={abilities[selectedItem].description}
-                fullWidth
-                disabled
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                type="text"
-                label={t("inputs.icon")}
-                value={abilities[selectedItem].icon}
                 fullWidth
                 disabled
               />

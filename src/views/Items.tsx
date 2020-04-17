@@ -8,9 +8,11 @@ import TextField from "@material-ui/core/TextField";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import IconSelector from "../components/IconSelector";
 import List from "../components/List";
 import View from "../components/View";
 
+import { decompressIcons } from "../utils/graphics";
 import { Ability } from "../utils/loader";
 
 const useStyles = makeStyles({
@@ -25,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Items({ items, abilities, onChange }: any) {
+function Items({ items, abilities, graphics, onChange }: any) {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -115,6 +117,10 @@ function Items({ items, abilities, onChange }: any) {
     16: "Carry up to 30",
   };
 
+  const icons = graphics.icons.items.map((icon: any) =>
+    decompressIcons(icon, graphics.palette)
+  );
+
   function handleClick(index: number) {
     setSelectedItem(index);
   }
@@ -129,6 +135,13 @@ function Items({ items, abilities, onChange }: any) {
         <List items={items} selectedItem={selectedItem} onClick={handleClick} />
         <View>
           <Grid container spacing={3}>
+            <Grid item xs={1}>
+              <IconSelector
+                icons={icons}
+                value={items[selectedItem].icon}
+                onChange={(value) => handleChange("icon", value)}
+              />
+            </Grid>
             <Grid item xs={3}>
               <TextField
                 type="text"
@@ -146,7 +159,7 @@ function Items({ items, abilities, onChange }: any) {
                 disabled
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <TextField
                 select
                 label={t("inputs.type")}
@@ -222,15 +235,6 @@ function Items({ items, abilities, onChange }: any) {
                 type="text"
                 label={t("inputs.characters")}
                 value={items[selectedItem].characters}
-                fullWidth
-                disabled
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                type="text"
-                label={t("inputs.icon")}
-                value={items[selectedItem].icon}
                 fullWidth
                 disabled
               />

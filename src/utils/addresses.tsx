@@ -358,6 +358,47 @@ const addresses = {
       collision_diameter: { offset: 0x09, octets: 8 },
     },
   },
+  graphics: {
+    palette: {
+      pointer: [
+        0x45ec, // Golden Sun 1: Europe-USA
+        0x45fc, // Golden Sun 1: France
+        0x461c, // Golden Sun 1: Germany
+        0x462c, // Golden Sun 1: Italy
+        0x464c, // Golden Sun 1: Spain
+      ],
+      length: 0xf,
+    },
+    icons: {
+      items: {
+        pointer: [
+          0x19ecc, // Golden Sun 1: Europe-USA
+          0x18dfc, // Golden Sun 1: France
+          0x18b40, // Golden Sun 1: Germany
+          0x19e38, // Golden Sun 1: Italy
+          0x18eac, // Golden Sun 1: Spain
+        ],
+      },
+      abilities: {
+        pointer: [
+          0x19ee0, // Golden Sun 1: Europe-USA
+          0x18e10, // Golden Sun 1: France
+          0x18b54, // Golden Sun 1: Germany
+          0x19e4c, // Golden Sun 1: Italy
+          0x18ec0, // Golden Sun 1: Spain
+        ],
+      },
+      status: {
+        pointer: [
+          0x1a4f8, // Golden Sun 1: Europe-USA
+          0x19428, // Golden Sun 1: France
+          0x1916c, // Golden Sun 1: Germany
+          0x1a464, // Golden Sun 1: Italy
+          0x194d8, // Golden Sun 1: Spain
+        ],
+      },
+    },
+  },
 };
 
 export default addresses;

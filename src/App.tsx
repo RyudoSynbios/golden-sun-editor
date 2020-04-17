@@ -231,11 +231,16 @@ function App() {
                 <Items
                   items={game.items}
                   abilities={game.abilities}
+                  graphics={game.graphics}
                   onChange={handleChange}
                 />
               )}
               {tab === "abilities" && (
-                <Abilities abilities={game.abilities} onChange={handleChange} />
+                <Abilities
+                  abilities={game.abilities}
+                  graphics={game.graphics}
+                  onChange={handleChange}
+                />
               )}
               {tab === "classes" && (
                 <Classes
@@ -281,10 +286,7 @@ function App() {
                 />
               )}
               {tab === "sprites" && (
-                <Sprites
-                  sprites={game.sprites}
-                  onChange={handleChange}
-                />
+                <Sprites sprites={game.sprites} onChange={handleChange} />
               )}
               {tab === "texts" && <Texts texts={game.texts} />}
             </div>
