@@ -1,5 +1,36 @@
 import FileSaver from "file-saver";
 
+export function hex2bin(hex: number) {
+  return hex.toString(2).padStart(8, "0");
+}
+
+export function reverseBin(bin: string) {
+  let newBin = "";
+
+  for (let i = 0; i < bin.length; i += 1) {
+    newBin = bin[i] + newBin;
+  }
+
+  return newBin;
+}
+
+export function intToHex(int: any, length: number) {
+  int = int.toString(16);
+  while (int.length < length) {
+    int = int.padStart(length, "0");
+  }
+  return int;
+}
+
+export function hexToSymbol(hex: number) {
+  if (hex >= 0x20) {
+    return String.fromCharCode(hex);
+  } else {
+    hex = intToHex(hex, 2);
+    return `{${hex}}`;
+  }
+}
+
 class HexEditor {
   fileName: string;
   fileReader: any;
@@ -11,37 +42,6 @@ class HexEditor {
       callback();
     };
     this.fileReader.readAsArrayBuffer(file);
-  }
-
-  hex2bin(hex: number) {
-    return hex.toString(2).padStart(8, "0");
-  }
-
-  reverseBin(bin: string) {
-    let newBin = "";
-
-    for (let i = 0; i < bin.length; i += 1) {
-      newBin = bin[i] + newBin;
-    }
-
-    return newBin;
-  }
-
-  intToHex(int: any, length: number) {
-    int = int.toString(16);
-    while (int.length < length) {
-      int = int.padStart(length, "0");
-    }
-    return int;
-  }
-
-  hexToSymbol(hex: number) {
-    if (hex >= 0x20) {
-      return String.fromCharCode(hex);
-    } else {
-      hex = this.intToHex(hex, 2);
-      return `{${hex}}`;
-    }
   }
 
   readBytes(offset: number, octets: number, toAscii?: boolean) {
@@ -59,7 +59,7 @@ class HexEditor {
         break;
     }
 
-    if (byte >= 0x8000000) {
+    if (byte >= 0x8000000 && byte < 0x9000000) {
       byte -= 0x8000000;
     }
 

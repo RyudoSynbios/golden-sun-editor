@@ -1,4 +1,4 @@
-import HexEditor from "./hexEditor";
+import HexEditor, { hex2bin, hexToSymbol, reverseBin } from "./hexEditor";
 
 interface CharTree {
   binary: string;
@@ -35,7 +35,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
       let charsBitstream = "";
 
       for (let j = 1; j <= offset; j += 1) {
-        charsBitstream += rom.hex2bin(
+        charsBitstream += hex2bin(
           rom.readBytes(startCharTrees + offset - j, 8)
         );
       }
@@ -62,8 +62,8 @@ function getTexts(rom: HexEditor, initialPointer: number) {
       let graph = "";
       let index = 0;
       for (let j = 0; index < indexLimit; j += 1) {
-        let graphBitstream = rom.reverseBin(
-          rom.hex2bin(rom.readBytes(startCharTrees + offset + j, 8))
+        let graphBitstream = reverseBin(
+          hex2bin(rom.readBytes(startCharTrees + offset + j, 8))
         );
 
         for (let k = 0; k < graphBitstream.length; k += 1) {
@@ -122,8 +122,8 @@ function getTexts(rom: HexEditor, initialPointer: number) {
     for (let j = textBlockLengths; j < textBlockLengths + length; j += 1) {
       let charsBitstream = "";
       for (let k = 0x0; k <= rom.readBytes(j, 8); k += 1) {
-        charsBitstream += rom.reverseBin(
-          rom.hex2bin(rom.readBytes(textBlock + cumuledTextsLength + k, 8))
+        charsBitstream += reverseBin(
+          hex2bin(rom.readBytes(textBlock + cumuledTextsLength + k, 8))
         );
       }
 
@@ -148,7 +148,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
         if (index !== -1) {
           const code = trees[lastCharacterDecoded][index].code;
           const charToInt = parseInt(code, 16);
-          const symbol = rom.hexToSymbol(charToInt);
+          const symbol = hexToSymbol(charToInt);
 
           if (trees[lastCharacterDecoded].length > 1) {
             binaries = "";
@@ -177,7 +177,7 @@ function getTexts(rom: HexEditor, initialPointer: number) {
             if (index !== -1) {
               const code = trees[lastCharacterDecoded][index].code;
               const charToInt = parseInt(code, 16);
-              const symbol = rom.hexToSymbol(charToInt);
+              const symbol = hexToSymbol(charToInt);
 
               if (trees[lastCharacterDecoded].length > 1) {
                 binaries = "";
