@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
-interface CompressedIcon {
+interface UncompressedImage {
   data: [];
+  width: number;
   className?: string;
   onClick?: () => void;
 }
 
-function CompressedIcon({ data, ...props }: CompressedIcon) {
+function UncompressedImage({ data, width, ...props }: UncompressedImage) {
   const canvasRef: any = useRef(null);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function CompressedIcon({ data, ...props }: CompressedIcon) {
       ctx.fillStyle = pixel;
       ctx.fillRect(x, y, 2, 2);
       x += 2;
-      if (x === 32) {
+      if (x === width) {
         y += 2;
         x = 0;
       }
@@ -29,12 +30,12 @@ function CompressedIcon({ data, ...props }: CompressedIcon) {
   return (
     <canvas
       ref={canvasRef}
-      width={32}
-      height={32}
+      width={width}
+      height={width}
       style={{ imageRendering: "pixelated" }}
       {...props}
     />
   );
 }
 
-export default CompressedIcon;
+export default UncompressedImage;

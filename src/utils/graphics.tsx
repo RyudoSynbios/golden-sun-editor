@@ -20,7 +20,44 @@ const compressed16Scheme = [
   "1111111111", // End
 ];
 
-export function getCompressedIconsLength(rom: HexEditor, offset: number) {
+export function decompressIcons(src: any, palette: any, width: number) {
+  let bitstream = "";
+  for (let i = 0; i < src.length; i += 1) {
+    bitstream += reverseBin(hex2bin(src[i]));
+  }
+  let reference: any = "0123456789ABCDEF";
+  let buffer = "";
+  let image = [];
+  for (let i = 0; i < bitstream.length; i += 1) {
+    buffer += bitstream[i];
+    if (compressed16Scheme.includes(buffer)) {
+      // eslint-disable-next-line no-loop-func
+      const index = compressed16Scheme.findIndex((item) => item === buffer);
+      if (index === width) {
+        break;
+      }
+      image.push(palette[parseInt(reference[index], 16)]);
+      reference =
+        reference[index] +
+        reference.substr(0, index) +
+        reference.substr(index + 1);
+      buffer = "";
+    }
+  }
+  return image;
+}
+
+export function getCompressedImages(rom: HexEditor, initialPointer: number) {
+  const icons: any = [];
+  let pointer = initialPointer;
+  while (rom.readBytes(pointer, 32) !== 0xffffffff) {
+    icons.push(getCompressedLength(rom, rom.readBytes(pointer, 32)));
+    pointer += 0x4;
+  }
+  return icons;
+}
+
+export function getCompressedLength(rom: HexEditor, offset: number) {
   const compressedArray = [];
   let buffer = "";
   while (true) {
@@ -41,49 +78,7 @@ export function getCompressedIconsLength(rom: HexEditor, offset: number) {
   }
 }
 
-export function getCompressedIcons(rom: HexEditor, initialPointer: number) {
-  const icons: any = [];
-  let pointer = initialPointer;
-  while (rom.readBytes(pointer, 32) !== 0xffffffff) {
-    icons.push(getCompressedIconsLength(rom, rom.readBytes(pointer, 32)));
-    pointer += 0x4;
-  }
-  return icons;
-}
-
-export function decompressIcons(src: any, palette: any) {
-  let bitstream = "";
-  for (let i = 0; i < src.length; i += 1) {
-    bitstream += reverseBin(hex2bin(src[i]));
-  }
-  let reference: any = "0123456789ABCDEF";
-  let buffer = "";
-  let image = [];
-  for (let i = 0; i < bitstream.length; i += 1) {
-    buffer += bitstream[i];
-    if (compressed16Scheme.includes(buffer)) {
-      // eslint-disable-next-line no-loop-func
-      const index = compressed16Scheme.findIndex((item) => item === buffer);
-      if (index === 16) {
-        break;
-      }
-      image.push(palette[parseInt(reference[index], 16)]);
-      reference =
-        reference[index] +
-        reference.substr(0, index) +
-        reference.substr(index + 1);
-      buffer = "";
-    }
-  }
-  return image;
-}
-
-export function getPalette(
-  rom: HexEditor,
-  initialPointer: number,
-  length: number
-) {
-  const offset = rom.readBytes(initialPointer, 16);
+export function getPalette(rom: HexEditor, offset: number, length: number) {
   const palette = [];
   for (let i = offset; i <= offset + length * 2; i += 0x2) {
     const hex = rom.readBytes(i, 16);

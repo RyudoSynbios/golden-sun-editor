@@ -6,7 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import CompressedIcon from "./CompressedIcon";
+import UncompressedImage from "./UncompressedImage";
 
 interface IconSelector {
   icons: [];
@@ -58,14 +58,15 @@ function IconSelector({ icons, value, onChange }: IconSelector) {
   return (
     <>
       <Button fullWidth className={classes.button} onClick={handleOpen}>
-        <CompressedIcon data={icons[value]} />
+        <UncompressedImage data={icons[value]} width={32} />
       </Button>
       <Dialog open={open} maxWidth="xs" fullWidth onClose={handleClose}>
         <DialogContent className={classes.dialogContent}>
           {icons.map((icon, index) => (
             <div key={index} className={classes.iconContainer}>
-              <CompressedIcon
+              <UncompressedImage
                 data={icon}
+                width={32}
                 className={classes.icon}
                 onClick={() => handleClick(index)}
               />

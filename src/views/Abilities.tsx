@@ -188,7 +188,7 @@ function Abilities({ abilities, graphics, onChange }: any) {
   ranges[255] = "11";
 
   const icons = graphics.icons.abilities.map((icon: any) =>
-    decompressIcons(icon, graphics.palette)
+    decompressIcons(icon, graphics.palette, 16)
   );
 
   function handleClick(index: number) {

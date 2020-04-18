@@ -3,7 +3,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { itemSpecial } from "./correspondances";
 import HexEditor from "./hexEditor";
-import { getCompressedIcons, getPalette } from "./graphics";
+import { getCompressedImages, getPalette } from "./graphics";
 import getTexts from "./texts";
 
 import addresses from "./addresses";
@@ -491,20 +491,22 @@ function loader(
     // Get Palette
     game.graphics.palette = getPalette(
       rom,
-      addresses.graphics.palette.pointer[game.zone],
+      rom.readBytes(addresses.graphics.palette.pointer[game.zone], 16),
       addresses.graphics.palette.length
     );
 
     // Get Icons
-    game.graphics.icons.items = getCompressedIcons(
+    game.graphics.icons.items = getCompressedImages(
       rom,
       rom.readBytes(addresses.graphics.icons.items.pointer[game.zone], 32)
     );
-    game.graphics.icons.abilities = getCompressedIcons(
+
+    game.graphics.icons.abilities = getCompressedImages(
       rom,
       rom.readBytes(addresses.graphics.icons.abilities.pointer[game.zone], 32)
     );
-    game.graphics.icons.status = getCompressedIcons(
+
+    game.graphics.icons.status = getCompressedImages(
       rom,
       rom.readBytes(addresses.graphics.icons.status.pointer[game.zone], 32)
     );
