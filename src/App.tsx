@@ -200,6 +200,8 @@ function App() {
                   <Tabs
                     indicatorColor="primary"
                     textColor="primary"
+                    variant="scrollable"
+                    scrollButtons="auto"
                     value={tab}
                     onChange={handleTabChange}
                   >
