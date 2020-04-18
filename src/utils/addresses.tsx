@@ -367,7 +367,7 @@ const addresses = {
         0x462c, // Golden Sun 1: Italy
         0x464c, // Golden Sun 1: Spain
       ],
-      length: 0xf,
+      length: 0xdf,
     },
     icons: {
       items: {
