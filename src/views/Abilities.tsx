@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import IconSelector from "../components/IconSelector";
+import ImageSelector from "../components/ImageSelector";
 import List from "../components/List";
 import View from "../components/View";
 
@@ -210,7 +210,8 @@ function Abilities({ abilities, graphics, onChange }: any) {
         <View>
           <Grid container spacing={3}>
             <Grid item xs={1}>
-              <IconSelector
+              <ImageSelector
+                width={32}
                 icons={icons}
                 value={abilities[selectedItem].icon}
                 onChange={(value) => handleChange("icon", value)}

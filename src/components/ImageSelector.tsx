@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import UncompressedImage from "./UncompressedImage";
 
-interface IconSelector {
+interface ImageSelector {
+  width: number;
   icons: [];
   value: number;
   onChange: (event: any) => void;
@@ -23,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "wrap",
   },
   iconContainer: {
-    height: 32,
     background: theme.palette.primary.main,
   },
   icon: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function IconSelector({ icons, value, onChange }: IconSelector) {
+function ImageSelector({ width, icons, value, onChange }: ImageSelector) {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -58,15 +58,19 @@ function IconSelector({ icons, value, onChange }: IconSelector) {
   return (
     <>
       <Button fullWidth className={classes.button} onClick={handleOpen}>
-        <UncompressedImage data={icons[value]} width={32} />
+        <UncompressedImage data={icons[value]} width={width} />
       </Button>
       <Dialog open={open} maxWidth="xs" fullWidth onClose={handleClose}>
         <DialogContent className={classes.dialogContent}>
           {icons.map((icon, index) => (
-            <div key={index} className={classes.iconContainer}>
+            <div
+              key={index}
+              style={{ height: width }}
+              className={classes.iconContainer}
+            >
               <UncompressedImage
                 data={icon}
-                width={32}
+                width={width}
                 className={classes.icon}
                 onClick={() => handleClick(index)}
               />
@@ -78,4 +82,4 @@ function IconSelector({ icons, value, onChange }: IconSelector) {
   );
 }
 
-export default IconSelector;
+export default ImageSelector;
