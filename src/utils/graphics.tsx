@@ -21,27 +21,29 @@ const compressed16Scheme = [
 ];
 
 export function decompressIcons(src: any, palette: any, width: number) {
-  let bitstream = "";
-  for (let i = 0; i < src.length; i += 1) {
-    bitstream += reverseBin(hex2bin(src[i]));
-  }
-  let reference: any = "0123456789ABCDEF";
-  let buffer = "";
   let image = [];
-  for (let i = 0; i < bitstream.length; i += 1) {
-    buffer += bitstream[i];
-    if (compressed16Scheme.includes(buffer)) {
-      // eslint-disable-next-line no-loop-func
-      const index = compressed16Scheme.findIndex((item) => item === buffer);
-      if (index === width) {
-        break;
+  if (src.length > 0) {
+    let bitstream = "";
+    for (let i = 0; i < src.length; i += 1) {
+      bitstream += reverseBin(hex2bin(src[i]));
+    }
+    let reference: any = "0123456789ABCDEF";
+    let buffer = "";
+    for (let i = 0; i < bitstream.length; i += 1) {
+      buffer += bitstream[i];
+      if (compressed16Scheme.includes(buffer)) {
+        // eslint-disable-next-line no-loop-func
+        const index = compressed16Scheme.findIndex((item) => item === buffer);
+        if (index === width) {
+          break;
+        }
+        image.push(palette[parseInt(reference[index], 16)]);
+        reference =
+          reference[index] +
+          reference.substr(0, index) +
+          reference.substr(index + 1);
+        buffer = "";
       }
-      image.push(palette[parseInt(reference[index], 16)]);
-      reference =
-        reference[index] +
-        reference.substr(0, index) +
-        reference.substr(index + 1);
-      buffer = "";
     }
   }
   return image;
@@ -92,4 +94,23 @@ export function getPalette(rom: HexEditor, offset: number, length: number) {
     );
   }
   return palette;
+}
+
+export function getPortraits(rom: HexEditor, offset: number) {
+  const portraits: any = [];
+  const maxCount = rom.readBytes(offset, 16) / 2;
+
+  for (let i = 0; i < maxCount; i += 1) {
+    let palette: any = [];
+    let data = [];
+    const jump = rom.readBytes(offset + i * 2, 16);
+    if (jump > 0) {
+      const cursor = offset + jump;
+      palette = getPalette(rom, cursor, 0xf);
+      data = getCompressedLength(rom, cursor + 0x20);
+    }
+    portraits.push({ data, palette });
+  }
+
+  return portraits;
 }

@@ -397,6 +397,15 @@ const addresses = {
         ],
       },
     },
+    portraits: {
+      pointer: [
+        0x3203c0, // Golden Sun 1: Europe-USA
+        0x321bc0, // Golden Sun 1: France
+        0x3201c0, // Golden Sun 1: Germany
+        0x3203c0, // Golden Sun 1: Italy
+        0x321bc0, // Golden Sun 1: Spain
+      ],
+    },
   },
 };
 

@@ -3,7 +3,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { itemSpecial } from "./correspondances";
 import HexEditor from "./hexEditor";
-import { getCompressedImages, getPalette } from "./graphics";
+import { getCompressedImages, getPalette, getPortraits } from "./graphics";
 import getTexts from "./texts";
 
 import addresses from "./addresses";
@@ -232,6 +232,7 @@ export interface Text {
 export interface Graphics {
   palette: any;
   icons: Icons;
+  portraits: any;
 }
 
 export interface Icons {
@@ -259,6 +260,7 @@ export const initialStateGame: Game = {
       abilities: [],
       status: [],
     },
+    portraits: [],
   },
 };
 
@@ -509,6 +511,12 @@ function loader(
     game.graphics.icons.status = getCompressedImages(
       rom,
       rom.readBytes(addresses.graphics.icons.status.pointer[game.zone], 32)
+    );
+
+    // Get Portraits
+    game.graphics.portraits = getPortraits(
+      rom,
+      rom.readBytes(addresses.graphics.portraits.pointer[game.zone], 32)
     );
 
     setGame(game);
