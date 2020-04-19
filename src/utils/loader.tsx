@@ -438,7 +438,7 @@ function loader(
       Object.keys(addresses.groups.attributs).forEach((attribut, index) => {
         const attr = Object.values(addresses.groups.attributs)[index];
         group[attribut] = rom.readBytes(
-          addresses.groups.offset[game.zone] +
+          rom.readBytes(addresses.groups.pointer[game.zone], 32) +
             i * addresses.groups.section_length +
             attr.offset,
           attr.octets

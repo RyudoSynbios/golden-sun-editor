@@ -272,32 +272,31 @@ const addresses = {
     },
   },
   groups: {
-    // TODO: find pointer
-    offset: [
-      0xc5c49, // Golden Sun 1: Europe-USA
-      0xc9c61, // Golden Sun 1: France
-      0xc8261, // Golden Sun 1: Germany
-      0xc5c61, // Golden Sun 1: Italy
-      0xc9c61, // Golden Sun 1: Spain
+    pointer: [
+      0xc2280, // Golden Sun 1: Europe-USA
+      0xc6298, // Golden Sun 1: France
+      0xc4898, // Golden Sun 1: Germany
+      0xc2298, // Golden Sun 1: Italy
+      0xc6298, // Golden Sun 1: Spain
     ],
     length: 0x17b,
     section_length: 0x10,
     attributs: {
-      enemy_1: { offset: 0x0, octets: 8 },
-      enemy_2: { offset: 0x1, octets: 8 },
-      enemy_3: { offset: 0x2, octets: 8 },
-      enemy_4: { offset: 0x3, octets: 8 },
-      enemy_5: { offset: 0x4, octets: 8 },
-      minimum_1: { offset: 0x5, octets: 8 },
-      minimum_2: { offset: 0x6, octets: 8 },
-      minimum_3: { offset: 0x7, octets: 8 },
-      minimum_4: { offset: 0x8, octets: 8 },
-      minimum_5: { offset: 0x9, octets: 8 },
-      maximum_1: { offset: 0xa, octets: 8 },
-      maximum_2: { offset: 0xb, octets: 8 },
-      maximum_3: { offset: 0xc, octets: 8 },
-      maximum_4: { offset: 0xd, octets: 8 },
-      maximum_5: { offset: 0xe, octets: 8 },
+      enemy_1: { offset: 0x1, octets: 8 },
+      enemy_2: { offset: 0x2, octets: 8 },
+      enemy_3: { offset: 0x3, octets: 8 },
+      enemy_4: { offset: 0x4, octets: 8 },
+      enemy_5: { offset: 0x5, octets: 8 },
+      minimum_1: { offset: 0x6, octets: 8 },
+      minimum_2: { offset: 0x7, octets: 8 },
+      minimum_3: { offset: 0x8, octets: 8 },
+      minimum_4: { offset: 0x9, octets: 8 },
+      minimum_5: { offset: 0xa, octets: 8 },
+      maximum_1: { offset: 0xb, octets: 8 },
+      maximum_2: { offset: 0xc, octets: 8 },
+      maximum_3: { offset: 0xd, octets: 8 },
+      maximum_4: { offset: 0xe, octets: 8 },
+      maximum_5: { offset: 0xf, octets: 8 },
     },
   },
   shops: {
