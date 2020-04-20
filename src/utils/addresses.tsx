@@ -357,6 +357,27 @@ const addresses = {
       collision_diameter: { offset: 0x09, octets: 8 },
     },
   },
+  maps: {
+    pointer: [
+      0x8a8e0, // Golden Sun 1: Europe-USA
+      0x8f8e8, // Golden Sun 1: France
+      0x8dee8, // Golden Sun 1: Germany
+      0x8a8e8, // Golden Sun 1: Italy
+      0x8f8e8, // Golden Sun 1: Spain
+    ],
+    length: 0xc9,
+    section_length: 0x8,
+    name: [
+      0xa07, // Golden Sun 1: Europe-USA
+      0x29ce, // Golden Sun 1: France
+      0x29ce, // Golden Sun 1: Germany
+      0x29ce, // Golden Sun 1: Italy
+      0x29ce, // Golden Sun 1: Spain
+    ],
+    attributs: {
+      // code: { offset: 0x0, octets: 16 },
+    },
+  },
   graphics: {
     palette: {
       pointer: [

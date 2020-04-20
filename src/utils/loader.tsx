@@ -19,6 +19,7 @@ export interface Game {
   groups: Group[];
   shops: Shop[];
   sprites: Sprite[];
+  maps: Map[];
   texts: Text[];
   graphics: Graphics;
 }
@@ -224,8 +225,11 @@ export interface Sprite {
   offset_y: number;
 }
 
+export interface Map {
+  name: string;
+}
+
 export interface Text {
-  index: number;
   text: string;
 }
 
@@ -253,6 +257,7 @@ export const initialStateGame: Game = {
   shops: [],
   sprites: [],
   texts: [],
+  maps: [],
   graphics: {
     palette: [],
     icons: {
@@ -488,6 +493,27 @@ function loader(
       sprite.name = "???";
 
       game.sprites.push(sprite);
+    }
+
+    // Get Maps
+    for (let i = 0; i < addresses.maps.length; i += 1) {
+      const map: any = {};
+      // Object.keys(addresses.maps.attributs).forEach((attribut, index) => {
+      //   const attr = Object.values(addresses.maps.attributs)[index];
+      //   map[attribut] = rom.readBytes(
+      //     rom.readBytes(addresses.maps.pointer[game.zone], 32) +
+      //       i * addresses.maps.section_length +
+      //       attr.offset,
+      //     attr.octets
+      //   );
+      // });
+
+      map.name = game.texts[addresses.maps.name[game.zone] + i].text.replace(
+        /\{.*?\}/g,
+        ""
+      );
+
+      game.maps.push(map);
     }
 
     // Get Palette
