@@ -273,13 +273,13 @@ const addresses = {
   },
   groups: {
     pointer: [
-      0xc2280, // Golden Sun 1: Europe-USA
-      0xc6298, // Golden Sun 1: France
-      0xc4898, // Golden Sun 1: Germany
-      0xc2298, // Golden Sun 1: Italy
-      0xc6298, // Golden Sun 1: Spain
+      0xc227c, // Golden Sun 1: Europe-USA
+      0xc6294, // Golden Sun 1: France
+      0xc4894, // Golden Sun 1: Germany
+      0xc2294, // Golden Sun 1: Italy
+      0xc6294, // Golden Sun 1: Spain
     ],
-    length: 0x17b,
+    length: 0x17c,
     section_length: 0x10,
     attributs: {
       enemy_1: { offset: 0x1, octets: 8 },
