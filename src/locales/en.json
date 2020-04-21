@@ -43,6 +43,7 @@
       "ability": "Ability",
       "agility": "Agility",
       "animations": "Animations",
+      "artifact": "Artificat",
       "attack": "Attack",
       "attribute": "Attribute",
       "characters": "Characters",
@@ -85,6 +86,13 @@
       "uses": "Uses",
       "utility": "Utilities",
       "width": "Width"
+    },
+    "shops": {
+      "types": {
+        "armors": "Armors",
+        "items": "Items",
+        "weapons": "Weapons"
+      }
     }
   }
 }

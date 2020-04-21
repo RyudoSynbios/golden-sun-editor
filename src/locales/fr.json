@@ -43,6 +43,7 @@
       "ability": "Capacité",
       "agility": "Agilité",
       "animations": "Animations",
+      "artifact": "Relique",
       "attack": "Attaque",
       "attribute": "Attriibut",
       "characters": "Personnages",
@@ -85,6 +86,13 @@
       "uses": "Utilisations",
       "utility": "Utilité",
       "width": "Largeur"
+    },
+    "shops": {
+      "types": {
+        "armors": "Armures",
+        "items": "Objets",
+        "weapons": "Armes"
+      }
     }
   }
 }

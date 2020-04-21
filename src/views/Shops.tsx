@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "../components/List";
 import View from "../components/View";
 
+import { shopTypes } from "../utils/enums";
 import { Item } from "../utils/loader";
 
 const useStyles = makeStyles({
@@ -43,6 +44,25 @@ function Shops({ shops, items, onChange }: any) {
         <List items={shops} selectedItem={selectedItem} onClick={handleClick} />
         <View>
           <Grid container spacing={3}>
+            <Grid item xs={3}>
+              <TextField
+                select
+                label={t("inputs.type")}
+                value={shops[selectedItem].type}
+                fullWidth
+                SelectProps={{
+                  native: true,
+                }}
+                onChange={(event) => handleChange("type", event.target.value)}
+              >
+                {shopTypes.map((type: string, index: number) => (
+                  <option key={index} value={index}>
+                    {t(`shops.types.${type}`)}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={12} />
             {[...new Array(24)].map((_, index) => (
               <Fragment key={index}>
                 <Grid item xs={3}>
@@ -56,6 +76,31 @@ function Shops({ shops, items, onChange }: any) {
                     }}
                     onChange={(event) =>
                       handleChange(`item_${index + 1}`, event.target.value)
+                    }
+                  >
+                    {items.map((item: Item, index: number) => (
+                      <option key={index} value={index}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </TextField>
+                </Grid>
+              </Fragment>
+            ))}
+            <Grid item xs={12} />
+            {[...new Array(8)].map((_, index) => (
+              <Fragment key={index}>
+                <Grid item xs={3}>
+                  <TextField
+                    select
+                    label={`${t("inputs.artifact")} ${index + 1}`}
+                    value={shops[selectedItem][`artifact_${index + 1}`]}
+                    fullWidth
+                    SelectProps={{
+                      native: true,
+                    }}
+                    onChange={(event) =>
+                      handleChange(`artifact_${index + 1}`, event.target.value)
                     }
                   >
                     {items.map((item: Item, index: number) => (

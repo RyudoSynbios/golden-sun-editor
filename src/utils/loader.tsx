@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
 import cloneDeep from "lodash.clonedeep";
 
+import addresses from "./addresses";
 import { itemSpecial } from "./correspondances";
+import { shopTypes } from "./enums";
 import HexEditor from "./hexEditor";
+import i18n from "./i18n";
 import { getCompressedImages, getPalette, getPortraits } from "./graphics";
 import getTexts from "./texts";
-
-import addresses from "./addresses";
 
 export interface Game {
   zone: number;
@@ -189,6 +190,7 @@ export interface Group {
 }
 
 export interface Shop {
+  name: string;
   item_1: string;
   item_2: string;
   item_3: string;
@@ -213,6 +215,15 @@ export interface Shop {
   item_22: string;
   item_23: string;
   item_24: string;
+  artifact_1: string;
+  artifact_2: string;
+  artifact_3: string;
+  artifact_4: string;
+  artifact_5: string;
+  artifact_6: string;
+  artifact_7: string;
+  artifact_8: string;
+  type: string;
 }
 
 export interface Sprite {
@@ -472,7 +483,7 @@ function loader(
         );
       });
 
-      shop.name = "???";
+      shop.name = i18n.t(`shops.types.${shopTypes[shop.type]}`);
 
       game.shops.push(shop);
     }
