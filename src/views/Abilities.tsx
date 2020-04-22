@@ -39,14 +39,6 @@ function Abilities({ abilities, graphics, inputs, onChange }: any) {
 
   const targets = ["???", "Enemy", "Ally", "???", "User"];
 
-  const attributes = [
-    "Earth attribute",
-    "Water attribute",
-    "Fire attribute",
-    "Wind attribute",
-    "No attributes",
-  ];
-
   const effects = [
     "Nothing",
     "?",
@@ -330,11 +322,13 @@ function Abilities({ abilities, graphics, inputs, onChange }: any) {
                   handleChange("attribute", event.target.value)
                 }
               >
-                {attributes.map((attribute, index) => (
-                  <option key={index} value={index}>
-                    {attribute}
-                  </option>
-                ))}
+                {inputs.abilityAttributes.map(
+                  (attribute: string, index: number) => (
+                    <option key={index} value={index}>
+                      {attribute}
+                    </option>
+                  )
+                )}
               </TextField>
             </Grid>
             <Grid item xs={3}>

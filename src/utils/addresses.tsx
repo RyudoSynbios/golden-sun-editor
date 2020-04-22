@@ -94,6 +94,13 @@ const addresses = {
       0x631, // Golden Sun 1: Italy
       0x631, // Golden Sun 1: Spain
     ],
+    nameAttributes: [
+      0xb77, // Golden Sun 1: Europe-USA
+      0xb2a, // Golden Sun 1: France
+      0xb2a, // Golden Sun 1: Germany
+      0xb2a, // Golden Sun 1: Italy
+      0xb2a, // Golden Sun 1: Spain
+    ],
     nameUses: [
       0xb13, // Golden Sun 1: Europe-USA
       0xac6, // Golden Sun 1: France

@@ -258,6 +258,7 @@ export interface Icons {
 }
 
 export interface Input {
+  abilityAttributes: string[];
   abilityUses: string[];
 }
 
@@ -284,6 +285,7 @@ export const initialStateGame: Game = {
     portraits: [],
   },
   inputs: {
+    abilityAttributes: [],
     abilityUses: [],
   },
 };
@@ -567,6 +569,12 @@ function loader(
     );
 
     // Get Inputs
+    game.inputs.abilityAttributes = [...new Array(5)].map((_, index) => {
+      return game.texts[
+        addresses.abilities.nameAttributes[game.zone] + index
+      ].text.replace(/\{.*?\}/g, "");
+    });
+
     game.inputs.abilityUses = [
       removeTextCodes(
         game.texts[addresses.abilities.nameUses[game.zone] + 1].text
