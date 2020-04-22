@@ -243,7 +243,7 @@ function Items({ items, abilities, graphics, onChange }: any) {
             <Grid item xs={12}></Grid>
             {[...new Array(4)].map((_, index) => (
               <Fragment key={index}>
-                <Grid key={index} item xs={3}>
+                <Grid item xs={3}>
                   <TextField
                     select
                     label={`${t("inputs.effect")} ${index + 1}`}
