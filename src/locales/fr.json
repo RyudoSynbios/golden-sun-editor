@@ -87,6 +87,22 @@
       "utility": "Utilité",
       "width": "Largeur"
     },
+    "abilities": {
+      "types": {
+        "none": "???",
+        "healing": "Soigne",
+        "effectOnly": "Effet seulement",
+        "addedDamage": "Ajoute des dégats",
+        "multiplier": "Multiplie",
+        "baseDamage": "Dégats de base",
+        "baseDamageDiminishing": "Dégats de base (diminuant)",
+        "effectOnlyAlwaysFirst": "Effet seulement (toujours premier)",
+        "summon": "Invocation",
+        "utility": "Utilitaire",
+        "psynergyDrain": "Drain de Psynergy",
+        "psynergyRecovery": "Récupération de Psynergy "
+      }
+    },
     "shops": {
       "types": {
         "armors": "Armures",

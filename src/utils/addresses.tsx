@@ -94,9 +94,16 @@ const addresses = {
       0x631, // Golden Sun 1: Italy
       0x631, // Golden Sun 1: Spain
     ],
+    nameUses: [
+      0xb13, // Golden Sun 1: Europe-USA
+      0xac6, // Golden Sun 1: France
+      0xac6, // Golden Sun 1: Germany
+      0xac6, // Golden Sun 1: Italy
+      0xac6, // Golden Sun 1: Spain
+    ],
     attributs: {
       target: { offset: 0x0, octets: 8 },
-      uses: { offset: 0x1, octets: 8 },
+      typeUses: { offset: 0x1, octets: 8 },
       attribute: { offset: 0x2, octets: 8 },
       effect: { offset: 0x3, octets: 8 },
       icon: { offset: 0x4, octets: 8 },

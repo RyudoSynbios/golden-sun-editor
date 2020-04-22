@@ -246,6 +246,7 @@ function App() {
                 <Abilities
                   abilities={game.abilities}
                   graphics={game.graphics}
+                  inputs={game.inputs}
                   onChange={handleChange}
                 />
               )}

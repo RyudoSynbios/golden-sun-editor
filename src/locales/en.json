@@ -87,6 +87,22 @@
       "utility": "Utilities",
       "width": "Width"
     },
+    "abilities": {
+      "types": {
+        "none": "???",
+        "healing": "Healing",
+        "effectOnly": "Effect Only",
+        "addedDamage": "Added Damage",
+        "multiplier": "Multiplier",
+        "baseDamage": "Base Damage",
+        "baseDamageDiminishing": "Base Damage (Diminishing)",
+        "effectOnlyAlwaysFirst": "Effect Only (Always First)",
+        "summon": "Summon",
+        "utility": "Utility",
+        "psynergyDrain": "Psynergy Drain",
+        "psynergyRecovery": "Psynergy Recovery"
+      }
+    },
     "shops": {
       "types": {
         "armors": "Armors",

@@ -23,6 +23,7 @@ export interface Game {
   maps: Map[];
   texts: Text[];
   graphics: Graphics;
+  inputs: Input;
 }
 
 export interface Item {
@@ -58,7 +59,7 @@ export interface Ability {
   name: string;
   description: string;
   target: string;
-  uses: string;
+  typeUses: string;
   attribute: string;
   effect: string;
   icon: string;
@@ -256,6 +257,10 @@ export interface Icons {
   status: any;
 }
 
+export interface Input {
+  abilityUses: string[];
+}
+
 export const initialStateGame: Game = {
   zone: -1,
   items: [],
@@ -278,7 +283,14 @@ export const initialStateGame: Game = {
     },
     portraits: [],
   },
+  inputs: {
+    abilityUses: [],
+  },
 };
+
+function removeTextCodes(text: string) {
+  return text.replace(/\{.*?\}/g, "");
+}
 
 function loader(
   file: File,
@@ -330,13 +342,12 @@ function loader(
         );
       });
 
-      item.name = game.texts[addresses.items.name[game.zone] + i].text.replace(
-        /\{.*?\}/g,
-        ""
+      item.name = removeTextCodes(
+        game.texts[addresses.items.name[game.zone] + i].text
       );
-      item.description = game.texts[
-        addresses.items.description[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
+      item.description = removeTextCodes(
+        game.texts[addresses.items.description[game.zone] + i].text
+      );
       item.special = itemSpecial(item.special);
 
       game.items.push(item);
@@ -355,12 +366,12 @@ function loader(
         );
       });
 
-      ability.name = game.texts[
-        addresses.abilities.name[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
-      ability.description = game.texts[
-        addresses.abilities.description[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
+      ability.name = removeTextCodes(
+        game.texts[addresses.abilities.name[game.zone] + i].text
+      );
+      ability.description = removeTextCodes(
+        game.texts[addresses.abilities.description[game.zone] + i].text
+      );
 
       game.abilities.push(ability);
     }
@@ -378,9 +389,9 @@ function loader(
         );
       });
 
-      Class.name = game.texts[
-        addresses.classes.name[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
+      Class.name = removeTextCodes(
+        game.texts[addresses.classes.name[game.zone] + i].text
+      );
 
       game.classes.push(Class);
     }
@@ -398,12 +409,12 @@ function loader(
         );
       });
 
-      djinni.name = game.texts[
-        addresses.djinn.name[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
-      djinni.description = game.texts[
-        addresses.djinn.description[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
+      djinni.name = removeTextCodes(
+        game.texts[addresses.djinn.name[game.zone] + i].text
+      );
+      djinni.description = removeTextCodes(
+        game.texts[addresses.djinn.description[game.zone] + i].text
+      );
 
       game.djinn.push(djinni);
     }
@@ -443,9 +454,9 @@ function loader(
         );
       });
 
-      enemy.name = game.texts[
-        addresses.enemies.name[game.zone] + i
-      ].text.replace(/\{.*?\}/g, "");
+      enemy.name = removeTextCodes(
+        game.texts[addresses.enemies.name[game.zone] + i].text
+      );
 
       game.enemies.push(enemy);
     }
@@ -519,9 +530,8 @@ function loader(
       //   );
       // });
 
-      map.name = game.texts[addresses.maps.name[game.zone] + i].text.replace(
-        /\{.*?\}/g,
-        ""
+      map.name = removeTextCodes(
+        game.texts[addresses.maps.name[game.zone] + i].text
       );
 
       game.maps.push(map);
@@ -555,6 +565,14 @@ function loader(
       rom,
       rom.readBytes(addresses.graphics.portraits.pointer[game.zone], 32)
     );
+
+    // Get Inputs
+    game.inputs.abilityUses = [
+      removeTextCodes(
+        game.texts[addresses.abilities.nameUses[game.zone] + 1].text
+      ),
+      removeTextCodes(game.texts[addresses.abilities.nameUses[game.zone]].text),
+    ];
 
     setGame(game);
     setIsLoading(false);

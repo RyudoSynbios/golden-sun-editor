@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 
@@ -10,6 +12,11 @@ import ImageSelector from "../components/ImageSelector";
 import List from "../components/List";
 import View from "../components/View";
 
+import {
+  readAbilityTypeUses,
+  writeAbilityTypeUses,
+} from "../utils/correspondances";
+import { abilititiesTypes } from "../utils/enums";
 import { decompressIcons } from "../utils/graphics";
 
 const useStyles = makeStyles({
@@ -24,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Abilities({ abilities, graphics, onChange }: any) {
+function Abilities({ abilities, graphics, inputs, onChange }: any) {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -38,21 +45,6 @@ function Abilities({ abilities, graphics, onChange }: any) {
     "Fire attribute",
     "Wind attribute",
     "No attributes",
-  ];
-
-  const types = [
-    "?",
-    "Healing",
-    "Effect Only",
-    "Added Damage",
-    "Multiplier",
-    "Base Damage",
-    "Base Damage (Diminishing)",
-    "Effect Only (Always First)",
-    "Summon",
-    "Utility",
-    "Psynergy Drain",
-    "Psynergy Recovery",
   ];
 
   const effects = [
@@ -299,17 +291,28 @@ function Abilities({ abilities, graphics, onChange }: any) {
               <TextField
                 select
                 label={t("inputs.type")}
-                value={abilities[selectedItem].type}
+                value={readAbilityTypeUses(
+                  abilities[selectedItem].typeUses,
+                  "type"
+                )}
                 fullWidth
                 SelectProps={{
                   native: true,
                 }}
-                disabled
-                onChange={(event) => handleChange("type", event.target.value)}
+                onChange={(event) =>
+                  handleChange(
+                    "typeUses",
+                    writeAbilityTypeUses(
+                      abilities[selectedItem].typeUses,
+                      "type",
+                      event.target.value
+                    )
+                  )
+                }
               >
-                {types.map((type, index) => (
+                {abilititiesTypes.map((type, index) => (
                   <option key={index} value={index}>
-                    {type}
+                    {t(`abilities.types.${type}`)}
                   </option>
                 ))}
               </TextField>
@@ -371,6 +374,41 @@ function Abilities({ abilities, graphics, onChange }: any) {
                   </option>
                 ))}
               </TextField>
+            </Grid>
+            <Grid item xs={12}>
+              {inputs.abilityUses.map((use: string, index: number) => {
+                const uses = readAbilityTypeUses(
+                  abilities[selectedItem].typeUses,
+                  "uses"
+                );
+
+                return (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        color="primary"
+                        name={`uses-${index}`}
+                        checked={Boolean(uses[index])}
+                        onChange={(event) =>
+                          handleChange(
+                            "typeUses",
+                            writeAbilityTypeUses(
+                              abilities[selectedItem].typeUses,
+                              "uses",
+                              {
+                                ...uses,
+                                [index]: event.target.checked,
+                              }
+                            )
+                          )
+                        }
+                      />
+                    }
+                    label={use}
+                  />
+                );
+              })}
             </Grid>
           </Grid>
         </View>
