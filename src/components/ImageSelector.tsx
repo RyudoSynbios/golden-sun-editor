@@ -10,23 +10,21 @@ import UncompressedImage from "./UncompressedImage";
 
 interface ImageSelector {
   width: number;
-  icons: [];
+  images: [];
   value: number;
+  disabled?: boolean;
   onChange: (event: any) => void;
 }
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    height: 48,
-  },
   dialogContent: {
     display: "flex",
     flexFlow: "wrap",
   },
-  iconContainer: {
+  imageContainer: {
     background: theme.palette.primary.main,
   },
-  icon: {
+  image: {
     cursor: "pointer",
     opacity: 1,
     WebkitTransition: ".3s ease-in-out",
@@ -37,7 +35,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ImageSelector({ width, icons, value, onChange }: ImageSelector) {
+function ImageSelector({
+  width,
+  images,
+  value,
+  disabled,
+  onChange,
+}: ImageSelector) {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -57,21 +61,24 @@ function ImageSelector({ width, icons, value, onChange }: ImageSelector) {
 
   return (
     <>
-      <Button fullWidth className={classes.button} onClick={handleOpen}>
-        <UncompressedImage data={icons[value]} width={width} />
+      <Button fullWidth disabled={disabled} onClick={handleOpen}>
+        <UncompressedImage
+          data={value !== null ? images[value] : []}
+          width={width}
+        />
       </Button>
       <Dialog open={open} maxWidth="xs" fullWidth onClose={handleClose}>
         <DialogContent className={classes.dialogContent}>
-          {icons.map((icon, index) => (
+          {images.map((image, index) => (
             <div
               key={index}
               style={{ height: width }}
-              className={classes.iconContainer}
+              className={classes.imageContainer}
             >
               <UncompressedImage
-                data={icon}
+                data={image}
                 width={width}
-                className={classes.icon}
+                className={classes.image}
                 onClick={() => handleClick(index)}
               />
             </div>

@@ -196,7 +196,7 @@ function Abilities({ abilities, graphics, inputs, onChange }: any) {
             <Grid item xs={1}>
               <ImageSelector
                 width={32}
-                icons={icons}
+                images={icons}
                 value={abilities[selectedItem].icon}
                 onChange={(value) => handleChange("icon", value)}
               />
