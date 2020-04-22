@@ -1,1 +1,1 @@
-export const shopTypes = ["items", "weapons", "armors"];
+export const shopsTypes = ["items", "weapons", "armors"];

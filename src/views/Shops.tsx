@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "../components/List";
 import View from "../components/View";
 
-import { shopTypes } from "../utils/enums";
+import { shopsTypes } from "../utils/enums";
 import { Item } from "../utils/loader";
 
 const useStyles = makeStyles({
@@ -55,7 +55,7 @@ function Shops({ shops, items, onChange }: any) {
                 }}
                 onChange={(event) => handleChange("type", event.target.value)}
               >
-                {shopTypes.map((type: string, index: number) => (
+                {shopsTypes.map((type: string, index: number) => (
                   <option key={index} value={index}>
                     {t(`shops.types.${type}`)}
                   </option>

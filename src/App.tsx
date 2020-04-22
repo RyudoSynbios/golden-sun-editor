@@ -18,7 +18,7 @@ import Confirm from "./components/Confirm";
 import Dropzone from "./components/Dropzone";
 
 import addresses from "./utils/addresses";
-import { shopTypes } from "./utils/enums";
+import { shopsTypes } from "./utils/enums";
 import loader, { Game, initialStateGame } from "./utils/loader";
 
 import Abilities from "./views/Abilities";
@@ -135,7 +135,7 @@ function App() {
     } else if (section === "groups" && name === "enemy_1") {
       updatedGame.groups[index].name = game.enemies[value].name;
     } else if (section === "shops" && name === "type") {
-      updatedGame.shops[index].name = t(`shops.types.${shopTypes[value]}`);
+      updatedGame.shops[index].name = t(`shops.types.${shopsTypes[value]}`);
     }
 
     setGame({ ...updatedGame });

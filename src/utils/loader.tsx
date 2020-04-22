@@ -3,7 +3,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import addresses from "./addresses";
 import { itemSpecial } from "./correspondances";
-import { shopTypes } from "./enums";
+import { shopsTypes } from "./enums";
 import HexEditor from "./hexEditor";
 import i18n from "./i18n";
 import { getCompressedImages, getPalette, getPortraits } from "./graphics";
@@ -483,7 +483,7 @@ function loader(
         );
       });
 
-      shop.name = i18n.t(`shops.types.${shopTypes[shop.type]}`);
+      shop.name = i18n.t(`shops.types.${shopsTypes[shop.type]}`);
 
       game.shops.push(shop);
     }
