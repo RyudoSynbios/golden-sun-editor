@@ -151,7 +151,7 @@ function App() {
       } else {
         newChanges[changesIndex].value = value;
       }
-    } else {
+    } else if (value.toString() !== initialValue.toString()) {
       newChanges.push({ section, index, name, initialValue, value });
     }
     setChanges(newChanges);
