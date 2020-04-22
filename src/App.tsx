@@ -28,6 +28,7 @@ import Enemies from "./views/Enemies";
 import Groups from "./views/Groups";
 import Items from "./views/Items";
 import Maps from "./views/Maps";
+import PartyMembers from "./views/PartyMembers";
 import Shops from "./views/Shops";
 import Sprites from "./views/Sprites";
 import Summons from "./views/Summons";
@@ -122,10 +123,18 @@ function App() {
     name: string,
     value: any
   ) {
+    let subsection;
     let updatedGame: any = game;
     let newChanges = changes;
+
+    [section, subsection] = section.split(".");
+
     const initialValue = updatedGame[section][index][name];
     updatedGame[section][index][name] = value;
+
+    if (subsection) {
+      section += subsection.charAt(0).toUpperCase() + subsection.slice(1);
+    }
 
     // TODO: Change
     if (section === "summons" && name === "ability") {
@@ -217,6 +226,10 @@ function App() {
                     <Tab label={t("sections.enemies")} value="enemies" />
                     <Tab label={t("sections.groups")} value="groups" />
                     <Tab label={t("sections.shops")} value="shops" />
+                    <Tab
+                      label={t("sections.partyMembers")}
+                      value="partyMembers"
+                    />
                     <Tab label={t("sections.sprites")} value="sprites" />
                     <Tab label={t("sections.maps")} value="maps" />
                     <Tab label={t("sections.texts")} value="texts" />
@@ -290,6 +303,14 @@ function App() {
                 <Shops
                   shops={game.shops}
                   items={game.items}
+                  onChange={handleChange}
+                />
+              )}
+              {tab === "partyMembers" && (
+                <PartyMembers
+                  items={game.items}
+                  partyMembers={game.partyMembers}
+                  graphics={game.graphics}
                   onChange={handleChange}
                 />
               )}

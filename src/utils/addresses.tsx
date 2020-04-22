@@ -359,6 +359,106 @@ const addresses = {
       type: { offset: 0x40, octets: 8 },
     },
   },
+  partyMembersPortraits: {
+    pointer: [
+      0x19da0, // Golden Sun 1: Europe-USA
+      0x18cd0, // Golden Sun 1: France
+      0x18a14, // Golden Sun 1: Germany
+      0x19d0c, // Golden Sun 1: Italy
+      0x18d80, // Golden Sun 1: Spain
+    ],
+    length: 0x9,
+    section_length: 0x4,
+    attributs: {
+      character: { offset: 0x0, octets: 16 },
+      portrait: { offset: 0x2, octets: 16 },
+    },
+  },
+  partyMembersStats: {
+    pointer: [
+      0x78ee4, // Golden Sun 1: Europe-USA
+      0x7dee4, // Golden Sun 1: France
+      0x7cce4, // Golden Sun 1: Germany
+      0x78ee4, // Golden Sun 1: Italy
+      0x7dee4, // Golden Sun 1: Spain
+    ],
+    length: 0x8,
+    section_length: 0xb4,
+    name: [
+      0x66, // Golden Sun 1: Europe-USA
+      0x56, // Golden Sun 1: France
+      0x56, // Golden Sun 1: Germany
+      0x56, // Golden Sun 1: Italy
+      0x56, // Golden Sun 1: Spain
+    ],
+    attributs: {
+      hp_1: { offset: 0x50, octets: 16 },
+      hp_2: { offset: 0x52, octets: 16 },
+      hp_3: { offset: 0x54, octets: 16 },
+      hp_4: { offset: 0x56, octets: 16 },
+      hp_5: { offset: 0x58, octets: 16 },
+      hp_6: { offset: 0x5a, octets: 16 },
+      pp_1: { offset: 0x5c, octets: 16 },
+      pp_2: { offset: 0x5e, octets: 16 },
+      pp_3: { offset: 0x60, octets: 16 },
+      pp_4: { offset: 0x62, octets: 16 },
+      pp_5: { offset: 0x64, octets: 16 },
+      pp_6: { offset: 0x66, octets: 16 },
+      attack_1: { offset: 0x68, octets: 16 },
+      attack_2: { offset: 0x6a, octets: 16 },
+      attack_3: { offset: 0x6c, octets: 16 },
+      attack_4: { offset: 0x6e, octets: 16 },
+      attack_5: { offset: 0x70, octets: 16 },
+      attack_6: { offset: 0x72, octets: 16 },
+      defense_1: { offset: 0x74, octets: 16 },
+      defense_2: { offset: 0x76, octets: 16 },
+      defense_3: { offset: 0x78, octets: 16 },
+      defense_4: { offset: 0x7a, octets: 16 },
+      defense_5: { offset: 0x7c, octets: 16 },
+      defense_6: { offset: 0x7e, octets: 16 },
+      agility_1: { offset: 0x80, octets: 16 },
+      agility_2: { offset: 0x82, octets: 16 },
+      agility_3: { offset: 0x84, octets: 16 },
+      agility_4: { offset: 0x86, octets: 16 },
+      agility_5: { offset: 0x88, octets: 16 },
+      agility_6: { offset: 0x8a, octets: 16 },
+      luck_1: { offset: 0x8c, octets: 8 },
+      luck_2: { offset: 0x8d, octets: 8 },
+      luck_3: { offset: 0x8e, octets: 8 },
+      luck_4: { offset: 0x8f, octets: 8 },
+      luck_5: { offset: 0x90, octets: 8 },
+      luck_6: { offset: 0x91, octets: 8 },
+      venus: { offset: 0x92, octets: 8 },
+      mercury: { offset: 0x93, octets: 8 },
+      mars: { offset: 0x94, octets: 8 },
+      jupiter: { offset: 0x95, octets: 8 },
+      level: { offset: 0x96, octets: 8 },
+      item_1: { offset: 0x98, octets: 16 },
+      item_2: { offset: 0x9a, octets: 16 },
+      item_3: { offset: 0x9c, octets: 16 },
+      item_4: { offset: 0x9e, octets: 16 },
+      item_5: { offset: 0xa0, octets: 16 },
+      item_6: { offset: 0xa2, octets: 16 },
+      item_7: { offset: 0xa4, octets: 16 },
+      item_8: { offset: 0xa6, octets: 16 },
+      item_9: { offset: 0xa8, octets: 16 },
+      item_10: { offset: 0xaa, octets: 16 },
+      item_11: { offset: 0xac, octets: 16 },
+      item_12: { offset: 0xae, octets: 16 },
+      item_13: { offset: 0xb0, octets: 16 },
+    },
+  },
+  partyMembersExperience: {
+    pointer: [
+      0x79058, // Golden Sun 1: Europe-USA
+      0x7e058, // Golden Sun 1: France
+      0x7ce58, // Golden Sun 1: Germany
+      0x79058, // Golden Sun 1: Italy
+      0x7e058, // Golden Sun 1: Spain
+    ],
+    length: 0x8,
+    section_length: 0x0,
+  },
   sprites: {
     pointer: [
       0x185020, // Golden Sun 1: Europe-USA

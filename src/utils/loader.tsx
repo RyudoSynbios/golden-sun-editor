@@ -19,6 +19,7 @@ export interface Game {
   enemies: Enemy[];
   groups: Group[];
   shops: Shop[];
+  partyMembers: PartyMember[];
   sprites: Sprite[];
   maps: Map[];
   texts: Text[];
@@ -227,6 +228,65 @@ export interface Shop {
   type: string;
 }
 
+export interface PartyMember {
+  name: string;
+  portrait: number;
+  hp_1: number;
+  hp_2: number;
+  hp_3: number;
+  hp_4: number;
+  hp_5: number;
+  hp_6: number;
+  pp_1: number;
+  pp_2: number;
+  pp_3: number;
+  pp_4: number;
+  pp_5: number;
+  pp_6: number;
+  attack_1: number;
+  attack_2: number;
+  attack_3: number;
+  attack_4: number;
+  attack_5: number;
+  attack_6: number;
+  defense_1: number;
+  defense_2: number;
+  defense_3: number;
+  defense_4: number;
+  defense_5: number;
+  defense_6: number;
+  agility_1: number;
+  agility_2: number;
+  agility_3: number;
+  agility_4: number;
+  agility_5: number;
+  agility_6: number;
+  luck_1: number;
+  luck_2: number;
+  luck_3: number;
+  luck_4: number;
+  luck_5: number;
+  luck_6: number;
+  venus: number;
+  mercury: number;
+  mars: number;
+  jupiter: number;
+  level: number;
+  item_1: number;
+  item_2: number;
+  item_3: number;
+  item_4: number;
+  item_5: number;
+  item_6: number;
+  item_7: number;
+  item_8: number;
+  item_9: number;
+  item_10: number;
+  item_11: number;
+  item_12: number;
+  item_13: number;
+}
+
 export interface Sprite {
   width: number;
   height: number;
@@ -272,6 +332,7 @@ export const initialStateGame: Game = {
   enemies: [],
   groups: [],
   shops: [],
+  partyMembers: [],
   sprites: [],
   texts: [],
   maps: [],
@@ -499,6 +560,60 @@ function loader(
       shop.name = i18n.t(`shops.types.${shopsTypes[shop.type]}`);
 
       game.shops.push(shop);
+    }
+
+    // Get Party Members Portraits
+    const portraits = [];
+    for (let i = 0; i < addresses.partyMembersPortraits.length; i += 1) {
+      const portrait: any = [];
+      Object.keys(addresses.partyMembersPortraits.attributs).forEach(
+        (attribut, index) => {
+          const attr = Object.values(addresses.partyMembersPortraits.attributs)[
+            index
+          ];
+          portrait[attribut] = rom.readBytes(
+            rom.readBytes(
+              addresses.partyMembersPortraits.pointer[game.zone],
+              32
+            ) +
+              i * addresses.partyMembersPortraits.section_length +
+              attr.offset,
+            attr.octets
+          );
+        }
+      );
+
+      portraits.push(portrait);
+    }
+
+    // Get Party Members Stats
+    for (let i = 0; i < addresses.partyMembersStats.length; i += 1) {
+      const partyMember: any = {};
+      Object.keys(addresses.partyMembersStats.attributs).forEach(
+        (attribut, index) => {
+          const attr = Object.values(addresses.partyMembersStats.attributs)[
+            index
+          ];
+          partyMember[attribut] = rom.readBytes(
+            rom.readBytes(addresses.partyMembersStats.pointer[game.zone], 32) +
+              i * addresses.partyMembersStats.section_length +
+              attr.offset,
+            attr.octets
+          );
+        }
+      );
+
+      partyMember.name = removeTextCodes(
+        game.texts[addresses.partyMembersStats.name[game.zone] + i].text
+      );
+
+      const portraitIndex = portraits.findIndex(
+        (portrait) => portrait.character === i
+      );
+      partyMember.portrait =
+        portraitIndex !== -1 ? portraits[portraitIndex].portrait : null;
+
+      game.partyMembers.push(partyMember);
     }
 
     // Get Sprites
