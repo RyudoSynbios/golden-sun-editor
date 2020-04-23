@@ -72,7 +72,8 @@ function PartyMembers({ items, partyMembers, graphics, onChange }: any) {
           <Grid container spacing={3}>
             <Grid item xs={1}>
               <ImageSelector
-                width={64}
+                width={32}
+                scale={2}
                 images={portraits}
                 value={partyMembers[selectedItem].portrait}
                 disabled={partyMembers[selectedItem].portrait === null}

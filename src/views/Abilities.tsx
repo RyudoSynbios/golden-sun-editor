@@ -195,7 +195,8 @@ function Abilities({ abilities, graphics, inputs, onChange }: any) {
           <Grid container spacing={3}>
             <Grid item xs={1}>
               <ImageSelector
-                width={32}
+                width={16}
+                scale={2}
                 images={icons}
                 value={abilities[selectedItem].icon}
                 onChange={(value) => handleChange("icon", value)}

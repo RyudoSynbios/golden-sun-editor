@@ -3,11 +3,19 @@ import React, { useEffect, useRef } from "react";
 interface UncompressedImage {
   data: [];
   width: number;
+  height?: number;
+  scale?: number;
   className?: string;
   onClick?: () => void;
 }
 
-function UncompressedImage({ data, width, ...props }: UncompressedImage) {
+function UncompressedImage({
+  data,
+  width,
+  height = width,
+  scale = 1,
+  ...props
+}: UncompressedImage) {
   const canvasRef: any = useRef(null);
 
   useEffect(() => {
@@ -19,10 +27,10 @@ function UncompressedImage({ data, width, ...props }: UncompressedImage) {
       let y = 0;
       data.forEach((pixel: any) => {
         ctx.fillStyle = pixel;
-        ctx.fillRect(x, y, 2, 2);
-        x += 2;
-        if (x === width) {
-          y += 2;
+        ctx.fillRect(x, y, scale, scale);
+        x += scale;
+        if (x === width * scale) {
+          y += scale;
           x = 0;
         }
       });
@@ -35,8 +43,8 @@ function UncompressedImage({ data, width, ...props }: UncompressedImage) {
   return (
     <canvas
       ref={canvasRef}
-      width={width}
-      height={width}
+      width={width * scale}
+      height={height * scale}
       style={{ imageRendering: "pixelated" }}
       {...props}
     />

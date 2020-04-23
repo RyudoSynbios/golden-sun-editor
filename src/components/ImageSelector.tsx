@@ -10,6 +10,7 @@ import UncompressedImage from "./UncompressedImage";
 
 interface ImageSelector {
   width: number;
+  scale?: number;
   images: [];
   value: number;
   disabled?: boolean;
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ImageSelector({
   width,
+  scale = 1,
   images,
   value,
   disabled,
@@ -65,6 +67,7 @@ function ImageSelector({
         <UncompressedImage
           data={value !== null ? images[value] : []}
           width={width}
+          scale={scale}
         />
       </Button>
       <Dialog open={open} maxWidth="xs" fullWidth onClose={handleClose}>
@@ -72,12 +75,13 @@ function ImageSelector({
           {images.map((image, index) => (
             <div
               key={index}
-              style={{ height: width }}
+              style={{ height: width * scale }}
               className={classes.imageContainer}
             >
               <UncompressedImage
                 data={image}
                 width={width}
+                scale={scale}
                 className={classes.image}
                 onClick={() => handleClick(index)}
               />
