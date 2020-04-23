@@ -98,7 +98,7 @@ function PartyMembers({ items, partyMembers, graphics, onChange }: any) {
                 onChange={(event) => handleChange("level", event.target.value)}
               />
             </Grid>
-            <Grid item xs={12} />
+            <Grid item xs={5} />
             {[...new Array(6)].map((_, index) => (
               <Grid key={index} item xs={4}>
                 <TextField
