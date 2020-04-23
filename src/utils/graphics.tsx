@@ -20,7 +20,7 @@ const compressed16Scheme = [
   "1111111111", // End
 ];
 
-export function decompressIcons(src: any, palette: any, width: number) {
+export function decompressIcons(src: any, palette: any) {
   let image = [];
   if (src.length > 0) {
     let bitstream = "";
@@ -34,9 +34,6 @@ export function decompressIcons(src: any, palette: any, width: number) {
       if (compressed16Scheme.includes(buffer)) {
         // eslint-disable-next-line no-loop-func
         const index = compressed16Scheme.findIndex((item) => item === buffer);
-        if (index === width) {
-          break;
-        }
         image.push(palette[parseInt(reference[index], 16)]);
         reference =
           reference[index] +

@@ -32,7 +32,7 @@ function PartyMembers({ items, partyMembers, graphics, onChange }: any) {
   const [selectedItem, setSelectedItem] = useState(0);
 
   const portraits = graphics.portraits.map((portrait: any) =>
-    decompressIcons(portrait.data, portrait.palette, 32)
+    decompressIcons(portrait.data, portrait.palette)
   );
 
   function handleClick(index: number) {

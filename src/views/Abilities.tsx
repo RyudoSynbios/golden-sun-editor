@@ -172,7 +172,7 @@ function Abilities({ abilities, graphics, inputs, onChange }: any) {
   ranges[255] = "11";
 
   const icons = graphics.icons.abilities.map((icon: any) =>
-    decompressIcons(icon, graphics.palette, 16)
+    decompressIcons(icon, graphics.palette)
   );
 
   function handleClick(index: number) {

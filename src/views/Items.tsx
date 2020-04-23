@@ -118,7 +118,7 @@ function Items({ items, abilities, graphics, onChange }: any) {
   };
 
   const icons = graphics.icons.items.map((icon: any) =>
-    decompressIcons(icon, graphics.palette, 16)
+    decompressIcons(icon, graphics.palette)
   );
 
   function handleClick(index: number) {
