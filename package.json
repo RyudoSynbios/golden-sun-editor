@@ -46,7 +46,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-virtualized": "^9.21.8",
     "concurrently": "^5.1.0",
-    "electron": "^8.2.1",
+    "electron": "^18.3.7",
     "electron-builder": "^22.4.1",
     "wait-on": "^4.0.2"
   },
