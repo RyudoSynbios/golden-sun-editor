@@ -1,5 +1,9 @@
 # Golden Sun Editor
 
+## ⛔️ Deprecated
+
+This repository is now deprecated. It has been merged here: [https://github.com/RyudoSynbios/game-tools-collection](https://github.com/RyudoSynbios/game-tools-collection).
+
 ## Prerequisite
 
 [Node.js](https://nodejs.org/)
